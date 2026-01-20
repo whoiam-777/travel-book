@@ -1,19 +1,23 @@
 :root{
-  --bg:#0b1220;
-  --panel:#0f1930;
-  --surface:#0e172b;
-  --text:#eaf0ff;
-  --muted:rgba(234,240,255,.75);
-  --muted2:rgba(234,240,255,.55);
-  --line:rgba(234,240,255,.12);
-  --shadow: 0 18px 60px rgba(0,0,0,.35);
-  --shadow-soft: 0 10px 30px rgba(0,0,0,.22);
+  --bg:#f6f7fb;
+  --panel:#ffffff;
+  --surface:#ffffff;
+
+  --text:#0b1220;
+  --muted:rgba(11,18,32,.74);
+  --muted2:rgba(11,18,32,.55);
+
+  --line:rgba(11,18,32,.12);
+  --shadow: 0 18px 60px rgba(11,18,32,.14);
+  --shadow-soft: 0 10px 30px rgba(11,18,32,.10);
+
   --r-xl:24px;
   --r-lg:18px;
   --r-md:14px;
   --r-sm:12px;
 
-  --accent:#7cf2d6;
+  /* Акцент как у референса (розовый) */
+  --accent:#ff2a91;
   --accent2:#6ea8ff;
 
   --container:1160px;
