@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Test — Travel Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbfbfc;
+      --panel: rgba(255,255,255,.75);
+      --text: #0b1220;
+      --muted: rgba(11,18,32,.62);
+      --stroke: rgba(11,18,32,.10);
+      --shadow: 0 18px 60px rgba(11,18,32,.10);
+      --shadow2: 0 10px 30px rgba(11,18,32,.08);
+
+      --accent: #1f5eff; /* спокойный акцент, можно менять */
+      --accent2: #0ea5a5; /* второй акцент, используется в варианте 2/3 точечно */
+      --radius: 22px;
+
+      --container: 1160px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Top dev switcher (для теста) */
+    .devbar{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:50;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      box-shadow: var(--shadow2);
+    }
+    .devbar .label{
+      font-size:12px;
+      color: var(--muted);
+      margin-right:6px;
+    }
+    .devbar button{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      color: rgba(11,18,32,.85);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      cursor:pointer;
+      transition: .18s ease;
+    }
+    .devbar button:hover{ transform: translateY(-1px); }
+    .devbar button.active{
+      border-color: rgba(31,94,255,.35);
+      box-shadow: 0 0 0 4px rgba(31,94,255,.12);
+      color: #0b1220;
+    }
+
+    .wrap{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 96px 24px 40px;
+    }
+
+    /* Base hero */
+    .hero{
+      position: relative;
+      border-radius: var(--radius);
+      overflow:hidden;
+      min-height: 620px; /* desktop */
+      border: 1px solid var(--stroke);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      padding: 54px;
+      align-items: center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 8px 12px;
+      border:1px solid var(--stroke);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(31,94,255,.9);
+      box-shadow: 0 0 0 4px rgba(31,94,255,.12);
+    }
+
+    h1{
+      margin: 18px 0 10px;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .sub{
+      margin: 0 0 26px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    .cta-row{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      margin-top: 6px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,94,255,.28);
+      background: linear-gradient(180deg, rgba(31,94,255,1), rgba(31,94,255,.92));
+      color:#fff;
+      font-weight: 700;
+      font-size: 15px;
+      cursor:pointer;
+      box-shadow: 0 14px 34px rgba(31,94,255,.22);
+      transition: .18s ease;
+      text-decoration:none;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+
+    .meta{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.65);
+      border-radius: 14px;
+      padding: 12px 14px;
+      line-height: 1.35;
+    }
+
+    .author-card{
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      height: 520px;
+    }
+    .author-card img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.02) contrast(1.02);
+    }
+    .author-badge{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      right:18px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(11,18,32,.10);
+      backdrop-filter: blur(12px);
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+    }
+    .avatar{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(31,94,255,.12);
+      border: 1px solid rgba(31,94,255,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color: rgba(11,18,32,.8);
+      flex: 0 0 auto;
+    }
+    .author-name{
+      font-weight:700;
+      font-size: 14px;
+      margin:0;
+    }
+    .author-note{
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* Variant visibility */
+    .variant{ display:none; }
+    .variant.active{ display:block; }
+
+    /* Variant 1: Calm confidence (clean) */
+    .v1{
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(31,94,255,.08), transparent 60%),
+        radial-gradient(900px 520px at 70% 80%, rgba(14,165,165,.08), transparent 60%),
+        #ffffff;
+    }
+
+    /* Variant 2: Soft travel atmosphere (subtle image-like gradient) */
+    .v2{
+      background:
+        radial-gradient(1200px 700px at 10% 5%, rgba(14,165,165,.14), transparent 60%),
+        radial-gradient(1200px 700px at 80% 70%, rgba(31,94,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,1), rgba(250,250,252,1));
+    }
+    .v2 .hero-inner{
+      grid-template-columns: 1fr 1fr;
+    }
+    .v2 .sub{
+      max-width: 52ch;
+    }
+    .v2 .support{
+      margin: 14px 0 0;
+      color: rgba(11,18,32,.55);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .v2 .btn{
+      background: linear-gradient(180deg, rgba(11,18,32,1), rgba(11,18,32,.92));
+      border-color: rgba(11,18,32,.18);
+      box-shadow: 0 16px 36px rgba(11,18,32,.18);
+    }
+    .v2 .dot{
+      background: rgba(11,18,32,.88);
+      box-shadow: 0 0 0 4px rgba(11,18,32,.12);
+    }
+
+    /* Variant 3: Premium typography + minimal */
+    .v3{
+      background:
+        radial-gradient(900px 600px at 85% 15%, rgba(31,94,255,.10), transparent 60%),
+        radial-gradient(900px 600px at 20% 85%, rgba(14,165,165,.10), transparent 60%),
+        #ffffff;
+    }
+    .v3 .hero-inner{
+      grid-template-columns: 1.05fr .95fr;
+      padding: 62px;
+    }
+    .v3 h1{
+      font-size: 64px;
+      letter-spacing: -0.04em;
+    }
+    .v3 .sub{
+      font-size: 17px;
+      max-width: 46ch;
+    }
+    .v3 .btn{
+      background: linear-gradient(180deg, rgba(14,165,165,1), rgba(14,165,165,.92));
+      border-color: rgba(14,165,165,.26);
+      box-shadow: 0 16px 40px rgba(14,165,165,.20);
+    }
+    .v3 .dot{
+      background: rgba(14,165,165,.95);
+      box-shadow: 0 0 0 4px rgba(14,165,165,.12);
+    }
+
+    /* Small helper footer */
+    .hint{
+      max-width: var(--container);
+      margin: 18px auto 0;
+      padding: 0 24px;
+      color: rgba(11,18,32,.45);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .hint code{
+      background: rgba(11,18,32,.04);
+      border: 1px solid rgba(11,18,32,.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    /* Desktop-only intent: if screen too small, add a note */
+    @media (max-width: 980px){
+      .wrap{ padding-top: 120px; }
+      .hero-inner{ grid-template-columns: 1fr; }
+      .author-card{ height: 420px; }
+      h1{ font-size: 44px; }
+      .devbar{ width: calc(100% - 24px); justify-content:center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Dev switcher -->
+  <div class="devbar" role="navigation" aria-label="Variant switcher">
+    <span class="label">Hero варианты:</span>
+    <button class="tab active" data-target="v1">Вариант 1</button>
+    <button class="tab" data-target="v2">Вариант 2</button>
+    <button class="tab" data-target="v3">Вариант 3</button>
+  </div>
+
+  <main class="wrap">
+
+    <!-- Variant 1 -->
+    <section class="hero variant active v1" id="v1">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Спокойная подготовка к поездке
+          </div>
+
+          <h1>Путешествуй без стресса</h1>
+
+          <p class="sub">Travel Book + видеоурок</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#buy">
+              Купить за <span id="price1">PRICE_TEXT</span>
+              <span aria-hidden="true" style="opacity:.9">→</span>
+            </a>
+            <div class="meta">
+              Уверенность в поездке: что сказать, как понять, как не теряться в типовых ситуациях.
+            </div>
+          </div>
+        </div>
+
+        <aside class="author-card" aria-label="Автор">
+          <img src="author.jpg" alt="Фото автора" />
+          <div class="author-badge">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div>
+              <p class="author-name" id="author1">AUTHOR_NAME</p>
+              <p class="author-note">Живое фото автора — ключевой якорь доверия. Без «экспертности», без пафоса.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Variant 2 -->
+    <section class="hero variant v2" id="v2">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Для поездок, где важно говорить уверенно
+          </div>
+
+          <h1>Путешествуй без стресса</h1>
+
+          <p class="sub">Travel Book + видеоурок</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#buy">
+              Купить за <span id="price2">PRICE_TEXT</span>
+              <span aria-hidden="true" style="opacity:.9">→</span>
+            </a>
+            <div class="meta">
+              Минимум лишнего: быстро понять продукт, быстро почувствовать спокойствие.
+            </div>
+          </div>
+
+          <p class="support">
+            Сценарии путешествия — без «учёбы» в лоб. Смысл: ты не тренируешься, ты готовишься жить в поездке спокойно.
+          </p>
+        </div>
+
+        <aside class="author-card" aria-label="Автор">
+          <img src="author.jpg" alt="Фото автора" />
+          <div class="author-badge">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div>
+              <p class="author-name" id="author2">AUTHOR_NAME</p>
+              <p class="author-note">Тон — спокойный, уверенный. Никаких «обучим/прокачаем», только уверенность в ситуации.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Variant 3 -->
+    <section class="hero variant v3" id="v3">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Премиальный минимализм
+          </div>
+
+          <h1>Путешествуй<br/>без стресса</h1>
+
+          <p class="sub">Travel Book + видеоурок</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#buy">
+              Купить за <span id="price3">PRICE_TEXT</span>
+              <span aria-hidden="true" style="opacity:.9">→</span>
+            </a>
+            <div class="meta">
+              Визуал «для взрослых»: тишина, воздух, ясность — без крика и без агрессии.
+            </div>
+          </div>
+        </div>
+
+        <aside class="author-card" aria-label="Автор">
+          <img src="author.jpg" alt="Фото автора" />
+          <div class="author-badge">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div>
+              <p class="author-name" id="author3">AUTHOR_NAME</p>
+              <p class="author-note">Фото — живое. Лучше: лёгкая улыбка, естественный свет, ощущение «свой человек».</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="hint">
+    Заменить: <code>AUTHOR_NAME</code>, <code>PRICE_TEXT</code>, файл <code>author.jpg</code> рядом с <code>index.html</code>.
+    Если хочешь, я добавлю версию с CSS-переменными под бренд и быстрым редактированием.
+  </div>
+
+  <script>
+    // Variant switch
+    const tabs = document.querySelectorAll('.tab');
+    const variants = document.querySelectorAll('.variant');
+
+    function setActive(targetId){
+      variants.forEach(v => v.classList.remove('active'));
+      tabs.forEach(t => t.classList.remove('active'));
+      document.getElementById(targetId).classList.add('active');
+      document.querySelector(`.tab[data-target="${targetId}"]`).classList.add('active');
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => setActive(btn.dataset.target));
+    });
+
+    // Quick placeholders (edit here if удобно)
+    const AUTHOR_NAME = "AUTHOR_NAME";
+    const PRICE_TEXT = "PRICE_TEXT"; // например: "9 990 ₸"
+
+    document.getElementById('author1').textContent = AUTHOR_NAME;
+    document.getElementById('author2').textContent = AUTHOR_NAME;
+    document.getElementById('author3').textContent = AUTHOR_NAME;
+
+    document.getElementById('price1').textContent = PRICE_TEXT;
+    document.getElementById('price2').textContent = PRICE_TEXT;
+    document.getElementById('price3').textContent = PRICE_TEXT;
+
+    // Avatar initial (первая буква имени)
+    const initial = (AUTHOR_NAME || "A").trim().charAt(0).toUpperCase() || "A";
+    document.querySelectorAll('.avatar').forEach(a => a.textContent = initial);
+  </script>
+</body>
+</html>
