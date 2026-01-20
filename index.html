@@ -1,655 +1,528 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Travel Book + видеоурок — Путешествуй без стресса</title>
+  <meta name="description" content="Travel Book + видеоурок: готовые фразы и сценарии для поездки, чтобы говорить спокойно и уверенно — без паники в аэропорту, отеле и городе.">
 
-  <title>Путешествуй без стресса — Travel Book + видеоурок</title>
-  <meta name="description" content="Travel Book + видеоурок по английскому для путешествий: сценарии, фразы и опора, чтобы в поездке говорить спокойно и уверенно — без стресса." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <meta property="og:title" content="Путешествуй без стресса — Travel Book + видеоурок" />
-  <meta property="og:description" content="Готовые сценарии и фразы для путешествий + видео, как говорить без ступора. Открыл в телефоне — применил в поездке." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/img/og.jpg" />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#101318; --muted:rgba(16,19,24,.64); --line:rgba(16,19,24,.10);
+      --accent:#ff2a91; --accent2:#f6f7fb;
+      --container:1180px; --g:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-  <link rel="icon" href="assets/img/og.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    /* Header */
+    .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .header-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,rgba(255,42,145,.92),rgba(255,255,255,.0));border:1px solid rgba(16,19,24,.08)}
+    .brand-txt{display:flex;flex-direction:column;line-height:1.05}
+    .brand-name{font-weight:800;font-size:14px;letter-spacing:.2px}
+    .brand-sub{font-size:12px;color:rgba(16,19,24,.55)}
+    .nav{display:flex;align-items:center;gap:12px}
+    .nav a{font-size:13px;color:rgba(16,19,24,.72);padding:8px 10px;border-radius:999px}
+    .nav a:hover{background:rgba(16,19,24,.05);color:rgba(16,19,24,.92)}
+    .header-cta{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border:1px solid rgba(16,19,24,.14);font-weight:700;font-size:13px;letter-spacing:.2px}
+    .btn-primary{background:var(--accent);color:#fff;border-color:transparent;border-radius:0}
+    .btn-ghost{background:transparent;border-radius:0}
+    .burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(16,19,24,.14);background:#fff}
+    .burger span{width:18px;height:2px;background:#111;position:relative;display:block}
+    .burger span:before,.burger span:after{content:"";position:absolute;left:0;width:18px;height:2px;background:#111}
+    .burger span:before{top:-6px}.burger span:after{top:6px}
 
-  <link rel="stylesheet" href="assets/css/styles.css" />
+    /* Mobile nav */
+    .mnav{display:none;border-top:1px solid var(--line);padding:10px 0}
+    .mnav a{display:block;padding:12px 20px;color:rgba(16,19,24,.84)}
+    .mnav a:hover{background:rgba(16,19,24,.04)}
+    .mnav .mcta{padding:12px 20px}
+    .mnav .mcta .btn{width:100%}
+
+    /* Hero like reference: air + big type + photo center */
+    .hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:flex-end}
+    .hero-type{position:absolute;inset:0;pointer-events:none;user-select:none}
+    .hero-type .w{position:absolute;font-family:"Bebas Neue",sans-serif;font-size:clamp(72px,10vw,160px);letter-spacing:2px;color:rgba(16,19,24,.44)}
+    .hero-type .w.left{left:20px;bottom:90px}
+    .hero-type .w.right{right:20px;bottom:90px}
+    .hero-type .tag{position:absolute;left:20px;top:110px;font-size:14px;color:rgba(16,19,24,.56)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--g);align-items:end;padding:32px 0 0}
+    .hero-copy{padding:0 0 26px}
+    .kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(16,19,24,.10);border-radius:999px;font-size:12px;color:rgba(16,19,24,.68);background:#fff}
+    h1{margin:14px 0 10px;font-size:clamp(44px,5vw,66px);line-height:.95;letter-spacing:-.8px}
+    .sub{margin:0;max-width:52ch;color:rgba(16,19,24,.70);font-size:16px;line-height:1.55}
+    .hero-actions{display:flex;align-items:center;gap:14px;margin-top:18px}
+    .hero-link{font-weight:700;color:rgba(16,19,24,.70);border-bottom:1px solid rgba(16,19,24,.18);padding-bottom:2px}
+    .hero-link:hover{color:rgba(16,19,24,.92)}
+    .hero-photo{display:flex;justify-content:center;align-items:flex-end}
+    .hero-photo .frame{
+      width:min(520px,90%); aspect-ratio:3/4; border-radius:18px;
+      background:radial-gradient(500px 350px at 50% 20%, rgba(255,42,145,.12), transparent 60%),
+                 radial-gradient(500px 350px at 80% 0%, rgba(16,19,24,.08), transparent 55%),
+                 #fff;
+      border:1px solid rgba(16,19,24,.10);
+      display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+    }
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+
+    /* Big bottom CTA bar (like reference) */
+    .hero-bar{margin-top:26px;background:var(--accent);color:#fff}
+    .hero-bar .bar-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+    .hero-bar .bar-row .mini{font-size:12px;opacity:.92}
+    .hero-bar .bar-row .btn{border-color:rgba(255,255,255,.38);color:#fff}
+    .hero-bar .bar-row .btn:hover{background:rgba(255,255,255,.08)}
+
+    /* Sections (air, minimal) */
+    section{padding:92px 0}
+    .section-head{margin-bottom:28px}
+    .h2{font-size:34px;letter-spacing:-.4px;margin:0 0 10px}
+    .p{margin:0;color:rgba(16,19,24,.68);max-width:70ch;line-height:1.65}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{background:#fff;border:1px solid rgba(16,19,24,.10);padding:18px}
+    .card .t{font-weight:800;margin:0 0 8px}
+    .card .d{margin:0;color:rgba(16,19,24,.66);line-height:1.55}
+    .price-card{padding:22px}
+    .price{font-weight:900;font-size:28px;letter-spacing:-.4px;margin:10px 0 0}
+    .ul{margin:12px 0 0;padding-left:18px;color:rgba(16,19,24,.68);line-height:1.7}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(16,19,24,.66);border:1px solid rgba(16,19,24,.10);padding:6px 10px;border-radius:999px}
+    .muted{color:rgba(16,19,24,.62)}
+    .divider{border-top:1px solid rgba(16,19,24,.10)}
+
+    /* Reviews */
+    .quote{font-size:14px;line-height:1.6;color:rgba(16,19,24,.70)}
+
+    /* FAQ */
+    details{border:1px solid rgba(16,19,24,.10);padding:14px 16px;background:#fff}
+    summary{cursor:pointer;font-weight:800}
+    details p{margin:10px 0 0;color:rgba(16,19,24,.70);line-height:1.65}
+
+    /* Form */
+    .form{display:grid;gap:12px;max-width:520px}
+    input,textarea{
+      width:100%;padding:12px 12px;border:1px solid rgba(16,19,24,.16);background:#fff;border-radius:0;
+      font:inherit;color:inherit;outline:none
+    }
+    input:focus,textarea:focus{border-color:rgba(255,42,145,.55);box-shadow:0 0 0 3px rgba(255,42,145,.12)}
+    .consent{font-size:12px;color:rgba(16,19,24,.62);line-height:1.45}
+    .consent a{color:rgba(16,19,24,.82);border-bottom:1px solid rgba(16,19,24,.22)}
+    .consent a:hover{color:rgba(16,19,24,.95)}
+    .row{display:flex;gap:10px;align-items:center}
+    .row input[type="checkbox"]{width:auto;margin:0}
+    .toast{display:none;margin-top:10px;color:rgba(16,19,24,.74);font-size:13px}
+
+    /* Footer */
+    footer{padding:28px 0 50px;border-top:1px solid rgba(16,19,24,.10);background:#fff}
+    .footer-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    .links a{font-size:13px;color:rgba(16,19,24,.68);border-bottom:1px solid rgba(16,19,24,.18)}
+    .links a:hover{color:rgba(16,19,24,.92)}
+
+    /* Cookie */
+    .cookie{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none}
+    .cookie-inner{
+      max-width:var(--container);margin:0 auto;background:#fff;border:1px solid rgba(16,19,24,.12);
+      padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px
+    }
+    .cookie p{margin:0;font-size:12px;color:rgba(16,19,24,.68);line-height:1.4}
+    .cookie .btn{padding:10px 14px}
+
+    /* Scroll reveal (subtle) */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .nav{display:none}
+      .burger{display:inline-flex}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-copy{padding-bottom:14px}
+      .hero-type .w.left,.hero-type .w.right{bottom:120px}
+      .hero-bar .bar-row{flex-direction:column;align-items:flex-start;padding:14px 0}
+    }
+    @media (max-width: 520px){
+      section{padding:70px 0}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .hero-type .w{font-size:92px}
+      .hero-type .w.left{left:14px}
+      .hero-type .w.right{right:14px}
+      .hero-type .tag{left:14px}
+      .hero-actions{flex-direction:column;align-items:flex-start}
+      .header-row{min-height:66px}
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Перейти к содержанию</a>
-
-  <header class="site-header" data-header>
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="На верх страницы">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-title">Travel Book</span>
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="#top" aria-label="На главную">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="brand-txt">
+          <span class="brand-name">Travel Book</span>
           <span class="brand-sub">+ видеоурок</span>
         </span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle-lines" aria-hidden="true"></span>
-      </button>
-
-      <nav class="nav" data-nav>
-        <a class="nav-link" href="#inside">Что внутри</a>
-        <a class="nav-link" href="#formats">Пакет</a>
-        <a class="nav-link" href="#how">Как работает</a>
-        <a class="nav-link" href="#author">Автор</a>
-        <a class="nav-link" href="#reviews">Отзывы</a>
-        <a class="nav-link" href="#faq">FAQ</a>
-        <a class="nav-link" href="#contacts">Контакты</a>
+      <nav class="nav" aria-label="Навигация">
+        <a href="#inside">Что внутри</a>
+        <a href="#formats">Пакет</a>
+        <a href="#how">Как работает</a>
+        <a href="#author">Автор</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
       </nav>
 
       <div class="header-cta">
-        <a class="btn btn-secondary btn-sm" href="#formats">Смотреть пакет</a>
-        <a class="btn btn-primary btn-sm" href="#order" data-buy-button>
-          Купить за <span data-price-inline>—</span>
-        </a>
+        <a class="btn btn-ghost" href="#formats">Смотреть пакет</a>
+        <a class="btn btn-primary" href="#formats">Выбрать — <span data-price-inline>12 900 ₸</span></a>
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+
+    <div class="mnav" id="mnav">
+      <a href="#inside">Что внутри</a>
+      <a href="#formats">Пакет</a>
+      <a href="#how">Как работает</a>
+      <a href="#author">Автор</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacts">Контакты</a>
+      <div class="mcta">
+        <a class="btn btn-primary" href="#formats">Выбрать — <span data-price-inline>12 900 ₸</span></a>
       </div>
     </div>
   </header>
 
-  <main id="main">
-    <section id="top" class="section hero">
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-type" aria-hidden="true">
+        <div class="tag">Travel Book + видеоурок</div>
+        <div class="w left">TRAVEL</div>
+        <div class="w right">NO STRESS</div>
+      </div>
+
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Travel Book + видеоурок</p>
-          <h1 class="h1">Путешествуй без стресса</h1>
-          <p class="lead">
-            Фразы, сценарии и опора, чтобы в поездке говорить спокойно и уверенно — без паники в аэропорту, отеле и городе.
-          </p>
-
-          <ul class="mini-points">
-            <li>Готовые сценарии: аэропорт, отель, кафе, такси</li>
-            <li>Открыл в телефоне — применил в дороге</li>
-            <li>Видео: как говорить без ступора</li>
-          </ul>
-
+          <span class="kicker">Travel Book + видеоурок</span>
+          <h1>Путешествуй без стресса</h1>
+          <p class="sub">Фразы, сценарии и опора, чтобы в поездке говорить спокойно и уверенно — без паники в аэропорту, отеле и городе.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#order" data-buy-button>
-              Купить за <span data-price-inline>—</span>
-            </a>
-            <a class="btn btn-secondary" href="#inside">Посмотреть, что внутри</a>
-          </div>
-
-          <div class="trust-row">
-            <div class="trust-chip">
-              <span class="trust-dot" aria-hidden="true"></span>
-              <span>Доступ сразу после оплаты</span>
-            </div>
-            <div class="trust-chip">
-              <span class="trust-dot" aria-hidden="true"></span>
-              <span>Подходит для поездок “впервые” и “после паузы”</span>
-            </div>
-            <div class="trust-chip">
-              <span class="trust-dot" aria-hidden="true"></span>
-              <span>Можно использовать в телефоне офлайн</span>
-            </div>
+            <a class="btn btn-primary" href="#formats">Выбрать пакет — <span data-price-inline>12 900 ₸</span></a>
+            <a class="hero-link" href="#inside">Что внутри</a>
           </div>
         </div>
 
-        <div class="hero-media reveal">
-          <div class="hero-card">
-            <div class="hero-card-top">
-              <div class="author-chip">
-                <img class="author-avatar" src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" />
-                <div class="author-chip-text">
-                  <div class="author-name">Ольга Говердовская</div>
-                  <div class="author-role">Автор</div>
-                </div>
-              </div>
-              <div class="soft-badge">Готовые сценарии</div>
-            </div>
-
-            <div class="hero-mockups">
-              <figure class="mockup book">
-                <img src="assets/img/book-cover.png" alt="Обложка Travel Book" loading="lazy" />
-                <figcaption>Travel Book</figcaption>
-              </figure>
-
-              <figure class="mockup video">
-                <div class="video-thumb" role="img" aria-label="Превью видеоурока">
-                  <span class="play" aria-hidden="true"></span>
-                  <span class="video-label">Видеоурок</span>
-                </div>
-                <figcaption>Как говорить без ступора</figcaption>
-              </figure>
-            </div>
-
-            <div class="hero-card-bottom">
-              <div class="metric">
-                <div class="metric-num">15+</div>
-                <div class="metric-text">типовых ситуаций</div>
-              </div>
-              <div class="metric">
-                <div class="metric-num">60s</div>
-                <div class="metric-text">чтобы найти фразу</div>
-              </div>
-              <div class="metric">
-                <div class="metric-num">0</div>
-                <div class="metric-text">лишней теории</div>
-              </div>
-            </div>
+        <div class="hero-photo reveal">
+          <div class="frame">
+            <!-- ЗАМЕНИ НА ЖИВОЕ ФОТО: /assets/img/author.jpg -->
+            <img src="assets/img/author.jpg" alt="Ольга Говердовская — автор">
           </div>
+        </div>
+      </div>
 
-          <div class="hero-bg" aria-hidden="true">
-            <img src="assets/img/hero-travel.jpg" alt="" loading="lazy" />
-          </div>
+      <div class="hero-bar">
+        <div class="container bar-row">
+          <div class="mini">Спокойная структура. Никакой «лишней теории». Только то, что реально пригодится в поездке.</div>
+          <a class="btn" href="#formats">Выбрать пакет — <span data-price-inline>12 900 ₸</span></a>
         </div>
       </div>
     </section>
 
-    <section id="inside" class="section">
+    <!-- INSIDE -->
+    <section id="inside">
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">Коротко: что внутри</h2>
-          <p class="sub">
-            Всё построено так, чтобы в поездке было ощущение: “я знаю, что сказать”.
-          </p>
+          <p class="p">Минимум текста, максимум пользы: готовые сценарии и быстрые подсказки — чтобы не зависать и не паниковать.</p>
         </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="icon">✦</div>
-            <h3 class="h3">Сценарии</h3>
-            <p class="p">Аэропорт, паспортный контроль, отель, кафе, такси, покупки, город, безопасность.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon">✦</div>
-            <h3 class="h3">Готовые фразы</h3>
-            <p class="p">Коротко и по делу: спросить, уточнить, объяснить, попросить, решить проблему.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon">✦</div>
-            <h3 class="h3">Опора в моменте</h3>
-            <p class="p">Структура и подсказки, чтобы не “зависать” и не теряться в разговоре.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon">✦</div>
-            <h3 class="h3">Видеоурок</h3>
-            <p class="p">Как говорить увереннее: темп, простые конструкции, что делать, если “забыл слова”.</p>
-          </article>
+        <div class="grid-3">
+          <div class="card reveal">
+            <p class="t">Сценарии поездки</p>
+            <p class="d">Аэропорт, отель, кафе, такси, город — с примерами фраз и вариантов.</p>
+          </div>
+          <div class="card reveal">
+            <p class="t">Travel Book в телефоне</p>
+            <p class="d">Открыли → нашли фразу → применили. Удобно в дороге.</p>
+          </div>
+          <div class="card reveal">
+            <p class="t">Видеоурок</p>
+            <p class="d">Как говорить без ступора: простая схема, чтобы уверенно «включаться» в диалог.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="formats" class="section section-alt">
+    <!-- FORMATS / PACKAGE -->
+    <section id="formats" style="background:var(--accent2)">
       <div class="container">
         <div class="section-head reveal">
-          <h2 class="h2">Форматы и состав пакета</h2>
-          <p class="sub">Один пакет, собранный под реальные задачи путешественника.</p>
+          <h2 class="h2">Пакет</h2>
+          <p class="p">Выбирайте спокойно: один понятный пакет, без давления и «агрессивных» таймеров.</p>
         </div>
 
-        <div class="pricing-grid">
-          <div class="price-card reveal">
-            <div class="price-top">
-              <div class="tag">Основной пакет</div>
-              <h3 class="h3">Travel Book + видеоурок</h3>
-              <p class="p muted">Доступ в цифровом формате. Можно открыть с телефона.</p>
-            </div>
-
-            <ul class="checklist">
-              <li>Travel Book (PDF/онлайн-доступ)</li>
-              <li>Видеоурок (ссылкой)</li>
-              <li>Сценарии: аэропорт / отель / кафе / такси</li>
-              <li>Фразы для решения проблемных ситуаций</li>
-              <li>Короткие подсказки “как сказать проще”</li>
+        <div class="grid-2">
+          <div class="card price-card reveal">
+            <span class="badge">Travel Book + видеоурок</span>
+            <div class="price">12 900 ₸</div>
+            <ul class="ul">
+              <li>Сценарии поездки: аэропорт / отель / кафе / такси / город</li>
+              <li>Быстрый поиск фраз по ситуациям</li>
+              <li>Видеоурок: как говорить без ступора</li>
+              <li>Доступ сразу после получения/оплаты (по вашей воронке)</li>
             </ul>
-
-            <div class="price-bottom">
-              <div class="price">
-                <span class="price-num" data-price-block>—</span>
-                <span class="price-note">разовый платеж</span>
-              </div>
-              <a class="btn btn-primary w-100" href="#order" data-buy-button>Купить за <span data-price-inline>—</span></a>
-              <a class="btn btn-secondary w-100" href="#how">Как это работает</a>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-primary" href="#contacts">Купить — 12 900 ₸</a>
+              <a class="btn btn-ghost" href="#how">Как это работает</a>
             </div>
+            <p class="muted" style="margin:12px 0 0;font-size:12px">
+              Нажимая «Купить», вы соглашаетесь с
+              <a href="legal/privacy.html" target="_blank" rel="noopener">политикой</a>,
+              <a href="legal/pd-consent.html" target="_blank" rel="noopener">ПД</a> и
+              <a href="legal/offer.html" target="_blank" rel="noopener">офертой</a>.
+            </p>
           </div>
 
-          <div class="side-card reveal">
-            <h3 class="h3">Кому особенно подходит</h3>
-            <p class="p muted">Если тебе важно не “учить язык”, а спокойно справляться в реальных диалогах.</p>
-
-            <div class="pill-list">
-              <span class="pill">первый выезд</span>
-              <span class="pill">самостоятельные поездки</span>
-              <span class="pill">пересадки и аэропорты</span>
-              <span class="pill">вопросы в отеле</span>
-              <span class="pill">еда и сервис</span>
-              <span class="pill">неожиданные ситуации</span>
-            </div>
-
-            <div class="divider"></div>
-
-            <h3 class="h3">Результат</h3>
-            <ul class="mini-points compact">
-              <li>меньше тревоги в поездке</li>
-              <li>быстрее ориентируешься в диалогах</li>
-              <li>легче решаешь бытовые вопросы</li>
-            </ul>
+          <div class="card reveal">
+            <p class="t">Для кого это</p>
+            <p class="d">Для тех, кто путешествует или собирается в поездку и хочет ощущение: «Я знаю, что сказать».</p>
+            <div class="divider" style="margin:16px 0"></div>
+            <p class="t">Какой результат</p>
+            <p class="d">Уверенность в поездке: меньше стресса, больше контроля и спокойствия в типовых ситуациях.</p>
+            <div class="divider" style="margin:16px 0"></div>
+            <p class="t">Важное</p>
+            <p class="d">Это не «курс с домашками». Это практическая опора, которую удобно держать под рукой.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section">
+    <!-- HOW -->
+    <section id="how">
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">Как это работает</h2>
-          <p class="sub">Простая схема: открыл — применил — почувствовал уверенность.</p>
+          <p class="p">Простая логика, без усложнений.</p>
         </div>
-
-        <div class="steps">
-          <div class="step reveal">
-            <div class="step-num">01</div>
-            <div class="step-body">
-              <h3 class="h3">Получаешь доступ</h3>
-              <p class="p muted">После оплаты — ссылка на материалы и видео.</p>
-            </div>
-          </div>
-
-          <div class="step reveal">
-            <div class="step-num">02</div>
-            <div class="step-body">
-              <h3 class="h3">Открываешь нужный сценарий</h3>
-              <p class="p muted">Аэропорт, отель, кафе, такси — под конкретную ситуацию.</p>
-            </div>
-          </div>
-
-          <div class="step reveal">
-            <div class="step-num">03</div>
-            <div class="step-body">
-              <h3 class="h3">Берёшь готовую фразу</h3>
-              <p class="p muted">Коротко и уверенно — без сложной грамматики.</p>
-            </div>
-          </div>
-
-          <div class="step reveal">
-            <div class="step-num">04</div>
-            <div class="step-body">
-              <h3 class="h3">Смотришь видео при необходимости</h3>
-              <p class="p muted">Как говорить проще, что делать, если “ступор”.</p>
-            </div>
-          </div>
+        <div class="grid-3">
+          <div class="card reveal"><p class="t">1) Открыли</p><p class="d">На телефоне или на ноутбуке — как удобнее.</p></div>
+          <div class="card reveal"><p class="t">2) Нашли сценарий</p><p class="d">Аэропорт / отель / кафе / город — и готовые фразы.</p></div>
+          <div class="card reveal"><p class="t">3) Применили</p><p class="d">Говорите спокойно: есть структура и «подстраховка».</p></div>
         </div>
       </div>
     </section>
 
-    <section id="after" class="section section-alt">
+    <!-- AUTHOR -->
+    <section id="author" style="background:var(--accent2)">
       <div class="container">
         <div class="section-head reveal">
-          <h2 class="h2">Что меняется в поездке</h2>
-          <p class="sub">Не про “знать язык”. Про ощущение опоры в моменте.</p>
+          <h2 class="h2">Автор</h2>
+          <p class="p">Ольга Говердовская — чтобы было доверие и понимание, кому вы отдаёте внимание.</p>
         </div>
-
-        <div class="grid-3">
-          <article class="card reveal">
-            <h3 class="h3">Больше спокойствия</h3>
-            <p class="p muted">Ты заранее понимаешь, что делать и что говорить в типовых ситуациях.</p>
-          </article>
-          <article class="card reveal">
-            <h3 class="h3">Меньше “ступора”</h3>
-            <p class="p muted">Есть готовые короткие конструкции и подсказки, как сказать проще.</p>
-          </article>
-          <article class="card reveal">
-            <h3 class="h3">Быстрее решаешь вопросы</h3>
-            <p class="p muted">Отель, кафе, город — бытовые диалоги перестают быть стрессом.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="author" class="section">
-      <div class="container">
-        <div class="author-grid">
-          <div class="author-photo reveal">
-            <img src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" />
-          </div>
-
-          <div class="author-info reveal">
-            <h2 class="h2">Автор</h2>
-            <p class="lead-sm">
-              Ольга Говердовская. Помогаю путешествовать увереннее — через сценарии, простые фразы и понятные опоры.
-            </p>
-
-            <ul class="checklist">
-              <li>Фокус на практических ситуациях, а не на теории</li>
-              <li>Материалы устроены так, чтобы быстро находить нужное</li>
-              <li>Подходит, если важно “говорить спокойно”, а не “учиться годами”</li>
-              <li>Можно использовать прямо в дороге с телефона</li>
+        <div class="grid-2">
+          <div class="card reveal">
+            <p class="t">Ольга Говердовская</p>
+            <p class="d">Помогаю путешествовать уверенно: без ступора и без лишней теории. Всё построено вокруг реальных ситуаций в поездке.</p>
+            <ul class="ul">
+              <li>Практика вместо «учебника»</li>
+              <li>Коротко и структурно</li>
+              <li>Подходит и «впервые», и «после паузы»</li>
             </ul>
-
-            <div class="author-actions">
-              <a class="btn btn-primary" href="#order" data-buy-button>Купить за <span data-price-inline>—</span></a>
-              <a class="btn btn-secondary" href="#contacts">Задать вопрос</a>
-            </div>
+          </div>
+          <div class="card reveal">
+            <p class="t">Почему это работает</p>
+            <p class="d">Вы не “учите язык”, вы берёте готовые сценарии и уверенность: что сказать, как начать, как продолжить.</p>
+            <div class="divider" style="margin:16px 0"></div>
+            <span class="badge">Спокойно</span>
+            <span class="badge">Понятно</span>
+            <span class="badge">По делу</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="reviews" class="section section-alt">
+    <!-- REVIEWS -->
+    <section id="reviews">
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">Отзывы</h2>
-          <p class="sub">Коротко и по делу: что почувствовали в поездке после.</p>
+          <p class="p">Коротко — чтобы не перегружать страницу. Полные отзывы можно добавить позже.</p>
         </div>
-
         <div class="grid-3">
-          <article class="quote reveal">
-            <div class="quote-top">
-              <div class="quote-name">Алина</div>
-              <div class="quote-meta">Travel Book + видеоурок</div>
-            </div>
-            <p class="quote-text">“В аэропорту впервые не паниковала. Открыла сценарий — быстро нашла фразу.”</p>
-          </article>
-
-          <article class="quote reveal">
-            <div class="quote-top">
-              <div class="quote-name">Дамир</div>
-              <div class="quote-meta">Travel Book + видеоурок</div>
-            </div>
-            <p class="quote-text">“В отеле спокойно решил вопрос с заселением. Понравилось, что всё коротко.”</p>
-          </article>
-
-          <article class="quote reveal">
-            <div class="quote-top">
-              <div class="quote-name">Мария</div>
-              <div class="quote-meta">Travel Book + видеоурок</div>
-            </div>
-            <p class="quote-text">“Видео помогло перестать усложнять. Стало легче говорить простыми фразами.”</p>
-          </article>
-        </div>
-
-        <div class="note reveal">
-          <div class="note-dot" aria-hidden="true"></div>
-          <p class="p muted">Тексты отзывов можно заменить на ваши реальные скрины/цитаты и добавить кнопку “полный отзыв”.</p>
+          <div class="card reveal"><p class="t">Алина • пакет</p><p class="quote">«В аэропорту вообще не паниковала. Открыла сценарий и спокойно сказала всё, что нужно.»</p></div>
+          <div class="card reveal"><p class="t">Данияр • пакет</p><p class="quote">«Наконец-то понятно “как начать говорить”. Видео очень помогло перестать зависать.»</p></div>
+          <div class="card reveal"><p class="t">Екатерина • пакет</p><p class="quote">«Удобно, что всё в телефоне. Реально практично, без лишних тем.»</p></div>
         </div>
       </div>
     </section>
 
-    <section id="free" class="section">
+    <!-- FREEBIE -->
+    <section id="free" style="background:var(--accent2)">
       <div class="container">
-        <div class="free-grid">
-          <div class="free-copy reveal">
-            <h2 class="h2">Бесплатная шпаргалка</h2>
-            <p class="sub">Мини-материал, который можно взять с собой: короткие фразы на “первые 10 минут” в поездке.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Бесплатная шпаргалка (опционально)</h2>
+          <p class="p">Если хотите — добавим лид-магнит. Сейчас это форма без сервера (позже подключите Formspree/Telegram/CRM).</p>
+        </div>
 
-            <ul class="mini-points compact">
-              <li>самые частые вопросы и ответы</li>
-              <li>как попросить повторить/говорить медленнее</li>
-              <li>как уточнить маршрут и оплату</li>
-            </ul>
-          </div>
-
-          <div class="form-card reveal">
-            <form class="form" id="leadForm">
-              <div class="form-row">
-                <label class="label" for="leadName">Имя</label>
-                <input class="input" id="leadName" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required />
-              </div>
-
-              <div class="form-row">
-                <label class="label" for="leadContact">Контакт</label>
-                <input class="input" id="leadContact" name="contact" type="text" placeholder="Telegram / WhatsApp / Email" required />
-              </div>
-
-              <label class="consent">
-                <input type="checkbox" required />
-                <span>
-                  Согласен(а) на обработку персональных данных и принимаю
-                  <a href="legal/privacy" target="_blank" rel="noopener">политику конфиденциальности</a>
-                  и
-                  <a href="legal/pd-consent" target="_blank" rel="noopener">согласие на обработку ПД</a>.
-                </span>
+        <div class="card reveal" style="padding:22px">
+          <form class="form" id="freeForm">
+            <input name="name" placeholder="Имя" autocomplete="name">
+            <input name="contact" placeholder="Email или Telegram" autocomplete="email">
+            <div class="row">
+              <input id="agreeFree" type="checkbox" required>
+              <label class="consent" for="agreeFree">
+                Согласен(на) с <a href="legal/privacy.html" target="_blank" rel="noopener">политикой</a> и
+                <a href="legal/pd-consent.html" target="_blank" rel="noopener">обработкой ПД</a>.
               </label>
-
-              <label class="consent">
-                <input type="checkbox" required />
-                <span>
-                  Согласен(а) на получение материалов и сообщений по теме (см.
-                  <a href="legal/mailing-consent" target="_blank" rel="noopener">согласие на рассылки</a>).
-                </span>
-              </label>
-
-              <button class="btn btn-primary w-100" type="submit">Получить шпаргалку</button>
-              <p class="hint">Мы не передаём данные третьим лицам. Отписка доступна в любой момент.</p>
-
-              <div class="form-success" role="status" aria-live="polite" hidden>
-                Готово. Мы свяжемся с вами и отправим материал.
-              </div>
-            </form>
-          </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Получить шпаргалку</button>
+            <div class="toast" id="freeToast">Готово. Форма сейчас демонстрационная — подключите обработчик, и мы отправим файл автоматически.</div>
+          </form>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section section-alt">
+    <!-- FAQ -->
+    <section id="faq">
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">FAQ</h2>
-          <p class="sub">Ответы на самые частые вопросы.</p>
+          <p class="p">Самые частые вопросы — коротко и спокойно.</p>
         </div>
-
-        <div class="faq reveal">
-          <details class="faq-item">
-            <summary>Это подойдёт, если уровень английского слабый?</summary>
-            <div class="faq-body">
-              <p class="p muted">Да. Фразы и сценарии короткие, построены на простых конструкциях. Цель — уверенность в диалогах, без сложной грамматики.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>Нужен ли интернет в поездке?</summary>
-            <div class="faq-body">
-              <p class="p muted">Можно сохранить материалы на телефон и пользоваться офлайн. Видео — по ссылке (его можно заранее посмотреть).</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>Когда я получу доступ после оплаты?</summary>
-            <div class="faq-body">
-              <p class="p muted">Сразу: автоматическая выдача ссылки/доступа. Если оплата вручную — отправка в течение короткого времени.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>Можно ли задать вопрос перед покупкой?</summary>
-            <div class="faq-body">
-              <p class="p muted">Да. Ниже есть контакты и форма — напишите, подскажем, как лучше использовать пакет под вашу поездку.</p>
-            </div>
-          </details>
+        <div class="grid-2">
+          <details class="reveal"><summary>Это обучение английскому?</summary><p>Это практическая опора для поездки: сценарии и фразы + видео, как говорить без ступора. Без “курса на месяцы”.</p></details>
+          <details class="reveal"><summary>Можно ли пользоваться с телефона?</summary><p>Да. Логика “открыл → нашёл → сказал”. Это и задумка продукта.</p></details>
+          <details class="reveal"><summary>Что если у меня базовый уровень?</summary><p>Подойдёт. Формулировки простые и “жизненные”.</p></details>
+          <details class="reveal"><summary>Как происходит доступ?</summary><p>По вашей воронке: сразу после оплаты/заявки. Технически можно подключить авто-доставку ссылкой.</p></details>
         </div>
       </div>
     </section>
 
-    <section id="order" class="section">
-      <div class="container">
-        <div class="order-grid">
-          <div class="order-copy reveal">
-            <h2 class="h2">Купить пакет</h2>
-            <p class="sub">Выберите удобный способ: оплата по ссылке или заявка (если хотите уточнить детали).</p>
-
-            <div class="order-box">
-              <div class="order-line">
-                <span class="order-label">Пакет</span>
-                <span class="order-value">Travel Book + видеоурок</span>
-              </div>
-              <div class="order-line">
-                <span class="order-label">Цена</span>
-                <span class="order-value" data-price-block>—</span>
-              </div>
-            </div>
-
-            <div class="order-actions">
-              <a class="btn btn-primary" href="#" data-pay-button>Перейти к оплате</a>
-              <a class="btn btn-secondary" href="#contacts">Задать вопрос</a>
-            </div>
-
-            <p class="hint">
-              Нажимая «Перейти к оплате», вы соглашаетесь с
-              <a href="legal/offer" target="_blank" rel="noopener">договором оферты</a>
-              и
-              <a href="legal/privacy" target="_blank" rel="noopener">политикой</a>.
-            </p>
-          </div>
-
-          <div class="form-card reveal">
-            <form class="form" id="questionForm">
-              <div class="form-row">
-                <label class="label" for="qName">Имя</label>
-                <input class="input" id="qName" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required />
-              </div>
-
-              <div class="form-row">
-                <label class="label" for="qContact">Контакт</label>
-                <input class="input" id="qContact" name="contact" type="text" placeholder="Telegram / WhatsApp / Email" required />
-              </div>
-
-              <div class="form-row">
-                <label class="label" for="qText">Сообщение</label>
-                <textarea class="input textarea" id="qText" name="message" rows="4" placeholder="Коротко опишите вопрос (например: поездка в апреле, пересадка, отель)"></textarea>
-              </div>
-
-              <label class="consent">
-                <input type="checkbox" required />
-                <span>
-                  Согласен(а) на обработку персональных данных и принимаю
-                  <a href="legal/privacy" target="_blank" rel="noopener">политику</a>
-                  и
-                  <a href="legal/pd-consent" target="_blank" rel="noopener">согласие на обработку ПД</a>.
-                </span>
-              </label>
-
-              <button class="btn btn-primary w-100" type="submit">Отправить</button>
-
-              <div class="form-success" role="status" aria-live="polite" hidden>
-                Принято. Мы свяжемся с вами.
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacts" class="section section-alt">
+    <!-- CONTACTS -->
+    <section id="contacts" style="background:var(--accent2)">
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">Контакты</h2>
-          <p class="sub">Напишите удобным способом — ответим и подскажем.</p>
+          <p class="p">Если хотите — оставьте контакт. Сейчас форма демо (без сервера), чтобы дизайн и юр-блоки были на месте.</p>
         </div>
 
-        <div class="contacts-grid">
-          <div class="contact-card reveal">
-            <h3 class="h3">Мессенджеры</h3>
-            <p class="p muted">Ссылки можно настроить в <span class="mono">assets/js/main.js</span>.</p>
-            <div class="contact-actions">
-              <a class="btn btn-secondary" href="#" data-wa>WhatsApp</a>
-              <a class="btn btn-secondary" href="#" data-tg>Telegram</a>
+        <div class="card reveal" style="padding:22px">
+          <form class="form" id="contactForm">
+            <input name="name" placeholder="Имя" autocomplete="name">
+            <input name="contact" placeholder="Телефон / Telegram / Email" autocomplete="email">
+            <textarea name="msg" rows="4" placeholder="Коротко: куда вы летите / что нужно"></textarea>
+            <div class="row">
+              <input id="agree" type="checkbox" required>
+              <label class="consent" for="agree">
+                Согласен(на) с <a href="legal/privacy.html" target="_blank" rel="noopener">политикой</a>,
+                <a href="legal/pd-consent.html" target="_blank" rel="noopener">обработкой ПД</a> и
+                <a href="legal/offer.html" target="_blank" rel="noopener">офертой</a>.
+                Для рассылок — <a href="legal/mailing-consent.html" target="_blank" rel="noopener">согласие</a>.
+              </label>
             </div>
-          </div>
-
-          <div class="contact-card reveal">
-            <h3 class="h3">Email</h3>
-            <p class="p muted">Для документов и официальных запросов.</p>
-            <a class="link" href="#" data-email-link>—</a>
-          </div>
-
-          <div class="contact-card reveal">
-            <h3 class="h3">Юридическая информация</h3>
-            <p class="p muted">Ссылки на документы — в футере и под формами.</p>
-            <div class="mini-links">
-              <a href="legal/privacy" target="_blank" rel="noopener">Политика</a>
-              <a href="legal/offer" target="_blank" rel="noopener">Оферта</a>
-              <a href="legal/pd-consent" target="_blank" rel="noopener">Согласие ПД</a>
-            </div>
-          </div>
+            <button class="btn btn-primary" type="submit">Отправить</button>
+            <div class="toast" id="contactToast">Заявка сохранена локально (демо). Подключите обработчик — и будет реальная отправка.</div>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-left">
-        <div class="brand footer-brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-text">
-            <span class="brand-title">Travel Book</span>
-            <span class="brand-sub">+ видеоурок</span>
-          </span>
-        </div>
-        <p class="p muted">Материалы для уверенных поездок без стресса. Практика, сценарии, короткие фразы.</p>
-        <p class="small muted">© <span data-year></span> Ольга Говердовская</p>
+  <footer>
+    <div class="container footer-row">
+      <div>
+        <div style="font-weight:900">Travel Book + видеоурок</div>
+        <div style="font-size:12px;color:rgba(16,19,24,.62);margin-top:6px">© <span id="y"></span> Все права защищены</div>
       </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Навигация</div>
-        <a href="#inside">Что внутри</a>
-        <a href="#formats">Пакет</a>
-        <a href="#author">Автор</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#order">Купить</a>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Документы</div>
-        <a href="legal/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a>
-        <a href="legal/pd-consent" target="_blank" rel="noopener">Согласие на обработку ПД</a>
-        <a href="legal/offer" target="_blank" rel="noopener">Договор оферты</a>
-        <a href="legal/mailing-consent" target="_blank" rel="noopener">Согласие на рассылки</a>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Контакты</div>
-        <a href="#" data-email-link>—</a>
-        <a href="#" data-wa>WhatsApp</a>
-        <a href="#" data-tg>Telegram</a>
+      <div class="links">
+        <a href="legal/privacy.html" target="_blank" rel="noopener">Политика</a>
+        <a href="legal/pd-consent.html" target="_blank" rel="noopener">Согласие ПД</a>
+        <a href="legal/offer.html" target="_blank" rel="noopener">Оферта</a>
+        <a href="legal/mailing-consent.html" target="_blank" rel="noopener">Рассылки</a>
       </div>
     </div>
   </footer>
 
-  <div class="cookie" data-cookie hidden>
+  <!-- Cookie notice -->
+  <div class="cookie" id="cookie">
     <div class="cookie-inner">
-      <div class="cookie-text">
-        Мы используем cookie для корректной работы сайта. Подробнее — в
-        <a href="legal/privacy" target="_blank" rel="noopener">политике конфиденциальности</a>.
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-secondary btn-sm" type="button" data-cookie-close>Закрыть</button>
-        <button class="btn btn-primary btn-sm" type="button" data-cookie-accept>Принять</button>
-      </div>
+      <p>Мы используем cookie для корректной работы сайта. <a href="legal/privacy.html" target="_blank" rel="noopener">Подробнее</a>.</p>
+      <button class="btn btn-primary" id="cookieOk">Принять</button>
     </div>
   </div>
 
-  <div class="modal" data-modal hidden aria-hidden="true">
-    <div class="modal-overlay" data-modal-close></div>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Оплата">
-      <div class="modal-top">
-        <div class="modal-title">Оплата</div>
-        <button class="modal-x" type="button" aria-label="Закрыть" data-modal-close>×</button>
-      </div>
-      <p class="p muted">
-        Укажи ссылку на оплату в <span class="mono">assets/js/main.js</span> (параметр <span class="mono">paymentUrl</span>).
-      </p>
-      <div class="modal-actions">
-        <a class="btn btn-primary w-100" href="#contacts" data-modal-close>Написать перед оплатой</a>
-        <button class="btn btn-secondary w-100" type="button" data-modal-close>Понятно</button>
-      </div>
-    </div>
-  </div>
+  <script>
+    // SETTINGS (правь здесь)
+    const PRICE = "12 900 ₸";
 
-  <script src="assets/js/main.js"></script>
+    // Price inline
+    document.querySelectorAll("[data-price-inline]").forEach(el => el.textContent = PRICE);
+
+    // Mobile nav
+    const burger = document.getElementById("burger");
+    const mnav = document.getElementById("mnav");
+    burger?.addEventListener("click", () => {
+      const open = mnav.style.display === "block";
+      mnav.style.display = open ? "none" : "block";
+      burger.setAttribute("aria-expanded", String(!open));
+    });
+    mnav?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      mnav.style.display = "none";
+      burger?.setAttribute("aria-expanded","false");
+    }));
+
+    // Scroll reveal (subtle)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }});
+    }, {threshold:0.12});
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+    // Forms (demo)
+    const freeForm = document.getElementById("freeForm");
+    const freeToast = document.getElementById("freeToast");
+    freeForm?.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      freeToast.style.display = "block";
+      try{ localStorage.setItem("freebie_lead", JSON.stringify(Object.fromEntries(new FormData(freeForm).entries())));}catch(_){}
+      freeForm.reset();
+    });
+
+    const cForm = document.getElementById("contactForm");
+    const cToast = document.getElementById("contactToast");
+    cForm?.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      cToast.style.display = "block";
+      try{ localStorage.setItem("contact_lead", JSON.stringify(Object.fromEntries(new FormData(cForm).entries())));}catch(_){}
+      cForm.reset();
+    });
+
+    // Cookie
+    const cookie = document.getElementById("cookie");
+    const cookieOk = document.getElementById("cookieOk");
+    const CK = "cookie_ok_v1";
+    try{
+      if(!localStorage.getItem(CK)) cookie.style.display = "block";
+      cookieOk?.addEventListener("click", ()=>{ localStorage.setItem(CK,"1"); cookie.style.display="none"; });
+    }catch(_){ cookie.style.display="block"; cookieOk?.addEventListener("click", ()=> cookie.style.display="none"); }
+
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
