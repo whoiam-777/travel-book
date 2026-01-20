@@ -3,536 +3,1566 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Book — Путешествуй без стресса</title>
 
+  <title>Travel Book + видеоурок — Путешествуй без стресса</title>
+  <meta name="description" content="Travel Book + видеоурок по английскому для путешествий. Уверенность в поездке без стресса: фразы, сценарии, подсказки и практика." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Путешествуй без стресса — Travel Book + видеоурок" />
+  <meta property="og:description" content="Онлайн-продукт для уверенных поездок: Travel Book + видеоурок по английскому для путешествий." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#fbfbfd;
-      --bg1:#f6f7fb;
-      --ink:#0b1220;
-      --muted:rgba(11,18,32,.64);
-      --muted2:rgba(11,18,32,.50);
-      --stroke:rgba(11,18,32,.10);
-      --stroke2:rgba(11,18,32,.14);
-
-      --accent:#2b59ff;
-      --accent2:#15b8a6;
-
-      --card: rgba(255,255,255,.70);
-      --card2: rgba(255,255,255,.86);
-
-      --shadow: 0 28px 80px rgba(11,18,32,.10);
-      --shadow2: 0 14px 36px rgba(11,18,32,.08);
-
-      --r-xl: 28px;
-      --r-lg: 22px;
-      --r-md: 18px;
-
-      --max: 1160px;
+      --bg: #070B14;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.54);
+      --accent: #7CFFB2;
+      --accent2:#84B8FF;
+      --accent3:#F8E8A8;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow2: 0 10px 26px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1180px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(1100px 780px at 10% 8%, rgba(43,89,255,.10), transparent 55%),
-        radial-gradient(900px 680px at 88% 30%, rgba(21,184,166,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(132,184,255,.18), transparent 55%),
+                  radial-gradient(900px 600px at 82% 18%, rgba(124,255,178,.14), transparent 52%),
+                  radial-gradient(900px 650px at 65% 90%, rgba(248,232,168,.10), transparent 55%),
+                  var(--bg);
+      color: var(--text);
       overflow-x:hidden;
     }
 
-    /* subtle grain */
-    body:before{
-      content:"";
-      position:fixed;
-      inset:-40%;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          rgba(0,0,0,.018) 0px,
-          rgba(0,0,0,.018) 1px,
-          transparent 2px,
-          transparent 6px
-        );
-      opacity:.25;
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font-family:inherit}
+
+    /* Subtle grain */
+    .grain{
       pointer-events:none;
-      transform: rotate(-8deg);
-      z-index:0;
+      position:fixed; inset:0;
+      opacity:.06;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    .page{ position:relative; z-index:1; }
-
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 22px 22px 40px;
+    /* Top progress bar */
+    .progress{
+      position:fixed; top:0; left:0; height:3px; width:0%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
+      z-index:80;
+      box-shadow: 0 0 22px rgba(124,255,178,.24);
     }
 
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding: 14px 0 10px;
-    }
+    /* Container */
+    .wrap{width:min(var(--max), calc(100% - 48px)); margin:0 auto}
+    @media (max-width: 560px){ .wrap{width:min(var(--max), calc(100% - 28px));} }
 
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,11,20,.76), rgba(7,11,20,.32));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap:14px;
+    }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex; align-items:center; gap:10px;
       min-width: 220px;
     }
     .logo{
-      width:44px;height:44px;border-radius: 14px;
+      width:34px; height:34px; border-radius:12px;
       background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.85), rgba(255,255,255,0)),
-        linear-gradient(180deg, rgba(43,89,255,1), rgba(43,89,255,.84));
-      box-shadow: 0 18px 40px rgba(43,89,255,.25);
-      border:1px solid rgba(255,255,255,.40);
+        radial-gradient(12px 12px at 30% 35%, rgba(255,255,255,.85), transparent 60%),
+        linear-gradient(135deg, rgba(132,184,255,.9), rgba(124,255,178,.9));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.16);
     }
-    .brand .t{
-      display:flex; flex-direction:column; line-height:1.1;
+    .brand b{
+      font-weight:700;
+      letter-spacing: .2px;
     }
-    .brand .t b{ font-size: 14px; letter-spacing: .01em; }
-    .brand .t span{ font-size: 12px; color: var(--muted); }
+    .brand span{
+      display:block;
+      font-size:12px;
+      color: var(--muted2);
+      margin-top:2px;
+    }
 
-    .top-actions{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:10px;
-      min-width: 220px;
+    .menu{
+      display:flex; align-items:center; gap:18px;
+      color: var(--muted);
+      font-size:14px;
     }
+    .menu a{
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
+      will-change: transform;
+    }
+    .menu a:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .navActions{display:flex; align-items:center; gap:10px}
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      display:inline-flex; align-items:center; gap:8px;
       padding: 10px 12px;
       border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      backdrop-filter: blur(10px);
-      color: rgba(11,18,32,.72);
-      font-size: 12px;
-      box-shadow: var(--shadow2);
-      white-space:nowrap;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
     }
-    .pill .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(43,89,255,.95);
-      box-shadow: 0 0 0 4px rgba(43,89,255,.14);
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+      color: var(--text);
+    }
+     .cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(132,184,255,.22), rgba(124,255,178,.14));
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: var(--shadow2);
+      transition: transform .25s ease, filter .25s ease, background .25s ease;
+      cursor:pointer;
+    }
+    .cta:hover{transform: translateY(-1px); filter: brightness(1.06)}
+    .cta:active{transform: translateY(0px); filter: brightness(.98)}
+
+    /* Mobile menu */
+    .burger{display:none; width:44px; height:44px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); cursor:pointer}
+    .burger svg{width:22px; height:22px; margin:auto; display:block; opacity:.9}
+    @media (max-width: 980px){
+      .menu{display:none}
+      .burger{display:inline-flex; align-items:center; justify-content:center}
+      .brand{min-width:auto}
+    }
+    .drawer{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding: 10px 0 14px;
+    }
+    .drawer a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 14px;
+      color: var(--muted);
+      transition: background .25s ease, color .25s ease;
+    }
+    .drawer a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+    .drawer.open{display:block}
+
+    /* Sections */
+    section{padding: 88px 0}
+    @media (max-width: 780px){ section{padding: 70px 0} }
+
+    /* Hero base */
+    .hero{padding: 42px 0 28px}
+    @media (max-width: 780px){ .hero{padding: 28px 0 10px} }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr; gap: 22px}
     }
 
-    /* HERO base */
-    .hero{
-      margin-top: 14px;
-      border-radius: var(--r-xl);
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.60);
-      backdrop-filter: blur(14px);
+    .kickerRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+      margin-bottom: 14px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .kicker i{
+      width: 18px; height: 18px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius: 6px;
+      background: rgba(132,184,255,.18);
+      border: 1px solid rgba(132,184,255,.22);
+    }
+
+    h1{
+      font-family: Fraunces, serif;
+      font-weight: 650;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.03;
+      letter-spacing: -0.6px;
+      margin: 10px 0 14px;
+    }
+    .sub{
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 58ch;
+    }
+
+    .heroActions{
+      display:flex; gap: 12px; flex-wrap:wrap;
+      align-items:center;
+      margin: 18px 0 10px;
+    }
+    .primary{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(124,255,178,.20), rgba(132,184,255,.16));
+      box-shadow: var(--shadow2);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+      cursor:pointer;
+      transition: transform .25s ease, filter .25s ease;
+    }
+    .primary:hover{transform: translateY(-1px); filter: brightness(1.06)}
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      cursor:pointer;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .ghost:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .fineprint{
+      color: var(--muted2);
+      font-size: 13px;
+      margin-top: 10px;
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .fineprint .dot{
+      width:4px; height:4px; border-radius:999px; background: rgba(255,255,255,.22);
+      display:inline-block;
+    }
+
+    /* Author card / Photo */
+    .photoCard{
+      position:relative;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .photoCard::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(500px 320px at 18% 18%, rgba(132,184,255,.18), transparent 55%),
+        radial-gradient(420px 280px at 78% 35%, rgba(124,255,178,.14), transparent 60%),
+        radial-gradient(520px 360px at 40% 95%, rgba(248,232,168,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .photoInner{
+      position:relative;
+      padding: 14px;
+    }
+    .photo{
+      border-radius: calc(var(--radius2) - 10px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      aspect-ratio: 4 / 5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .photo img{
+      width:100%; height:100%; object-fit:cover;
+      transform: scale(1.01);
+    }
+    .photoCaption{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:12px;
+      padding: 14px 6px 2px;
+    }
+    .photoCaption b{display:block; font-size: 14px; letter-spacing:.2px}
+    .photoCaption span{display:block; font-size: 12px; color: var(--muted2); margin-top: 4px}
+    .miniBadges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .mini{
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+
+    /* Cards */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .grid3{grid-template-columns: 1fr; gap: 12px} }
+
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      padding: 18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(360px 180px at 15% 20%, rgba(132,184,255,.12), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .card .h{
+      position:relative;
+      display:flex; align-items:center; gap:10px;
+      margin-bottom: 10px;
+    }
+    .icon{
+      width:38px; height:38px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .icon svg{width:20px; height:20px; opacity:.92}
+    .card h3{
+      position:relative;
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .2px;
+    }
+    .card p{
+      position:relative;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* Split section */
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .split{grid-template-columns: 1fr; gap: 12px} }
+    
+    .panel{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel h2{
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.3vw, 30px);
+      letter-spacing: -0.3px;
+      font-weight: 750;
+    }
+    .panel .lead{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+    .list{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .li{
+      display:flex; gap: 12px; align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .li b{display:block; font-size: 14px}
+    .li span{display:block; color: var(--muted2); font-size: 13px; margin-top: 4px; line-height: 1.5}
+    .check{
+      width:22px; height:22px; border-radius: 8px;
+      background: rgba(124,255,178,.12);
+      border:1px solid rgba(124,255,178,.18);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .check svg{width:14px; height:14px; opacity:.9}
+
+    /* Testimonials */
+    .testGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .testGrid{grid-template-columns: 1fr; gap: 12px} }
+    .quote{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .quote::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(360px 240px at 20% 15%, rgba(248,232,168,.11), transparent 60%);
+      pointer-events:none;
+    }
+    .quote p{position:relative; margin:0; color: var(--text); line-height: 1.6; font-size: 14px}
+    .quote .who{position:relative; margin-top: 12px; color: var(--muted); font-size: 13px}
+
+    /* FAQ */
+    .faq{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    details{
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding: 0 16px;
+    }
+    details:first-child{border-top:none}
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 16px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      color: var(--text);
+      font-weight: 650;
+    }
+    summary::-webkit-details-marker{display:none}
+    .ans{
+      color: var(--muted);
+      padding: 0 0 16px;
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .chev{
+      width:34px; height:34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      display:flex; align-items:center; justify-content:center;
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+    .chev svg{width:18px; height:18px; opacity:.9}
+
+    /* Final CTA */
+    .final{
+      padding: 52px 0 86px;
+    }
+    .ctaBlock{
+      border-radius: 32px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(700px 320px at 20% 30%, rgba(132,184,255,.16), transparent 62%),
+        radial-gradient(620px 320px at 80% 40%, rgba(124,255,178,.14), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .ctaTop{
+      display:flex; align-items:flex-end; justify-content:space-between; gap: 16px;
+      flex-wrap:wrap;
+    }
+    .ctaTop h2{
+      margin:0;
+      font-size: clamp(22px, 2.6vw, 34px);
+      letter-spacing:-0.35px;
+      font-weight: 800;
+    }
+    .ctaTop p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height:1.6;
+      max-width: 70ch;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 26px 0 34px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap: 14px; flex-wrap:wrap;
+      align-items:center;
+    }
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease}
+    .reveal.in{opacity:1; transform: translateY(0)}
+    .reveal.d2{transition-delay:.08s}
+    .reveal.d3{transition-delay:.16s}
+    .reveal.d4{transition-delay:.24s}
+
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1; transform:none; transition:none}
+      .cta, .pill, .menu a, .primary, .ghost{transition:none}
+    }
+
+    /* Hero variants visibility */
+    .heroVariant{display:none}
+    .heroVariant.active{display:block}
+
+    /* Variant 2 unique layout tweaks */
+    .heroCenter{
+      text-align:center;
+      padding: 16px 0 0;
+    }
+    .heroCenter .sub{margin-left:auto; margin-right:auto}
+    .heroCenter .heroActions{justify-content:center}
+    .heroBackdrop{
+      margin-top: 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 420px at 30% 10%, rgba(132,184,255,.18), transparent 60%),
+        radial-gradient(760px 420px at 70% 30%, rgba(124,255,178,.14), transparent 60%),
+        radial-gradient(760px 420px at 50% 95%, rgba(248,232,168,.10), transparent 60%),
+        rgba(255,255,255,.03);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
-
-    .hero:after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(520px 320px at 18% 22%, rgba(43,89,255,.14), transparent 60%),
-        radial-gradient(520px 320px at 80% 65%, rgba(21,184,166,.14), transparent 62%);
-      opacity:.55;
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:1;
+    .heroBackdrop .inner{
       display:grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap: 26px;
-      padding: 34px;
-      align-items:center;
-      min-height: 620px;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
     }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.76);
-      backdrop-filter: blur(12px);
-      color: rgba(11,18,32,.70);
-      font-size: 13px;
-      line-height:1;
+    @media (max-width: 980px){
+      .heroBackdrop .inner{grid-template-columns: 1fr; padding: 14px}
+    }
+    .floatCards{
+      display:grid;
+      gap: 12px;
+    }
+    .float{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 14px;
       box-shadow: var(--shadow2);
-      width: fit-content;
+      position:relative;
+      overflow:hidden;
     }
-    .kicker i{
-      width:10px;height:10px;border-radius:999px;display:inline-block;
-      background: rgba(21,184,166,.95);
-      box-shadow: 0 0 0 4px rgba(21,184,166,.14);
-    }
+    .float b{display:block; font-size: 14px}
+    .float span{display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.55}
 
-    h1{
-      margin: 18px 0 10px;
-      font-size: clamp(34px, 3.6vw, 64px);
-      line-height: 1.02;
-      letter-spacing: -0.035em;
+    /* Variant 3 asym layout */
+    .heroAsym{
+      position:relative;
+      padding-top: 10px;
     }
-    .sub{
-      margin: 0 0 18px;
-      font-size: clamp(15px, 1.25vw, 18px);
-      line-height: 1.55;
-      color: var(--muted);
-      max-width: 52ch;
+    .asymGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items:center;
     }
-
-    .value{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin: 18px 0 0;
+    @media (max-width: 980px){ .asymGrid{grid-template-columns: 1fr; gap: 18px} }
+    .stack{
+      display:grid;
+      gap: 12px;
+    }
+    .chipRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 14px;
     }
     .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
       padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      color: rgba(11,18,32,.74);
-      font-size: 12.5px;
-      box-shadow: 0 12px 26px rgba(11,18,32,.06);
-      white-space:nowrap;
-    }
-    .chip svg{ width:16px; height:16px; opacity:.85; }
-
-    .cta{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      margin-top: 22px;
-      flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 14px 18px;
-      border-radius: 16px;
-      border:1px solid rgba(43,89,255,.30);
-      background: linear-gradient(180deg, rgba(43,89,255,1), rgba(43,89,255,.92));
-      color:#fff;
-      font-weight: 800;
-      font-size: 15px;
-      cursor:pointer;
-      box-shadow: 0 18px 44px rgba(43,89,255,.22);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      filter: saturate(1.02);
-      box-shadow: 0 22px 56px rgba(43,89,255,.26);
-    }
-    .btn:active{ transform: translateY(0px); }
-
-    .btn-secondary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border:1px solid var(--stroke2);
-      background: rgba(255,255,255,.74);
-      color: rgba(11,18,32,.82);
-      font-weight: 800;
-      font-size: 14px;
-      cursor:pointer;
-      box-shadow: 0 14px 30px rgba(11,18,32,.07);
-      transition: transform .18s ease, background .18s ease;
-      user-select:none;
-    }
-    .btn-secondary:hover{ transform: translateY(-1px); background: rgba(255,255,255,.86); }
-
-    .fine{
-      width:100%;
-      color: var(--muted2);
-      font-size: 12px;
-      line-height: 1.35;
-      margin-top: 2px;
-    }
-
-    /* Photo card */
-    .photo{
-      position:relative;
-      border-radius: var(--r-xl);
-      border: 1px solid var(--stroke);
-      overflow:hidden;
-      height: 540px;
-      background:
-        radial-gradient(420px 320px at 40% 30%, rgba(255,255,255,.70), rgba(255,255,255,0)),
-        linear-gradient(180deg, rgba(11,18,32,.06), rgba(11,18,32,.02));
-      box-shadow: var(--shadow2);
-      isolation:isolate;
-    }
-    .photo img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-      transform: scale(1.02);
-      filter: contrast(1.02) saturate(1.02);
-    }
-    .photo:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(600px 440px at 20% 20%, rgba(43,89,255,.20), transparent 55%),
-        radial-gradient(520px 380px at 80% 70%, rgba(21,184,166,.18), transparent 62%),
-        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.10));
-      opacity:.40;
-      pointer-events:none;
-      z-index:2;
-    }
-
-    .badge{
-      position:absolute;
-      left:16px; right:16px; bottom:16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.28);
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(12px);
-      padding: 14px 14px;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      z-index:3;
-      box-shadow: 0 18px 44px rgba(11,18,32,.12);
-    }
-
-    .ava{
-      width:44px; height:44px;
-      border-radius: 16px;
-      background: rgba(21,184,166,.14);
-      border: 1px solid rgba(21,184,166,.18);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      letter-spacing: .02em;
-      color: rgba(11,18,32,.78);
-      flex: 0 0 auto;
-    }
-    .badge b{
-      display:block;
-      font-size: 14px;
-      letter-spacing: .01em;
-      margin-bottom: 2px;
-    }
-    .badge span{
-      display:block;
-      font-size: 12px;
-      line-height: 1.35;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
       color: var(--muted);
+      font-size: 13px;
+    }
+    .sideCol{
+      position:relative;
+    }
+    .sideCol .photoCard{
+      transform-origin: center;
+    }
+    .orb{
+      position:absolute;
+      width: 260px; height: 260px;
+      border-radius: 999px;
+      filter: blur(24px);
+      opacity: .28;
+      z-index: -1;
+      background: radial-gradient(circle at 30% 30%, rgba(132,184,255,.8), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(124,255,178,.7), transparent 55%);
+      right: -70px; top: -60px;
     }
 
-    /* Variants (no UI switch; controlled by ?v=) */
-    body[data-v="1"] .hero{ background: rgba(255,255,255,.62); }
-    body[data-v="1"] .btn{ background: linear-gradient(180deg, rgba(43,89,255,1), rgba(43,89,255,.92)); }
-
-    body[data-v="2"] .hero{
-      background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(21,184,166,.12), transparent 60%),
-        radial-gradient(1200px 700px at 85% 55%, rgba(43,89,255,.12), transparent 60%),
-        rgba(255,255,255,.62);
+    /* Small util */
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap: 14px; flex-wrap:wrap;
+      margin-bottom: 18px;
     }
-    body[data-v="2"] .btn{
-      background: linear-gradient(180deg, rgba(11,18,32,1), rgba(11,18,32,.92));
-      border-color: rgba(11,18,32,.20);
-      box-shadow: 0 18px 44px rgba(11,18,32,.16);
+    .sectionTitle h2{
+      margin:0;
+      font-size: clamp(22px, 2.6vw, 34px);
+      letter-spacing: -0.35px;
+      font-weight: 800;
     }
-    body[data-v="2"] .kicker i{
-      background: rgba(11,18,32,.88);
-      box-shadow: 0 0 0 4px rgba(11,18,32,.14);
+    .sectionTitle p{
+      margin:0;
+      color: var(--muted);
+      max-width: 72ch;
+      line-height: 1.6;
+      font-size: 14px;
     }
-    body[data-v="2"] .pill .dot{
-      background: rgba(11,18,32,.88);
-      box-shadow: 0 0 0 4px rgba(11,18,32,.12);
-    }
-
-    body[data-v="3"] .hero-inner{
-      grid-template-columns: 1fr 1fr;
-      padding: 40px;
-      gap: 22px;
-    }
-    body[data-v="3"] .hero:after{ opacity:.70; }
-    body[data-v="3"] h1{ letter-spacing: -0.045em; }
-    body[data-v="3"] .btn{
-      background: linear-gradient(180deg, rgba(21,184,166,1), rgba(21,184,166,.92));
-      border-color: rgba(21,184,166,.26);
-      box-shadow: 0 18px 48px rgba(21,184,166,.20);
-    }
-    body[data-v="3"] .kicker i{
-      background: rgba(21,184,166,.95);
-      box-shadow: 0 0 0 4px rgba(21,184,166,.14);
-    }
-
-    /* Responsive */
-    @media (max-width: 1040px){
-      .hero-inner{ min-height: unset; }
-      .photo{ height: 520px; }
-    }
-    @media (max-width: 900px){
-      header{ padding-top: 10px; }
-      .brand{ min-width: unset; }
-      .top-actions{ min-width: unset; }
-      .hero-inner{
-        grid-template-columns: 1fr;
-        padding: 24px;
-        gap: 18px;
-      }
-      .photo{ height: 440px; }
-    }
-    @media (max-width: 520px){
-      .wrap{ padding: 14px 14px 28px; }
-      .logo{ width:40px;height:40px;border-radius: 14px; }
-      .pill{ display:none; }
-      .hero-inner{ padding: 18px; }
-      .kicker{ font-size: 12.5px; }
-      .btn, .btn-secondary{ width: 100%; }
-      .cta{ gap:10px; }
-      .photo{ height: 380px; border-radius: var(--r-lg); }
-      .badge{ border-radius: 18px; padding: 12px; }
-      .ava{ width:42px;height:42px; border-radius: 16px; }
-    }
-
-    /* Motion (respect reduced motion) */
-    @media (prefers-reduced-motion: no-preference){
-      .hero, header{ animation: in .55s ease both; }
-      .photo{ animation: in2 .65s ease both; }
-      @keyframes in{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform: translateY(0);} }
-      @keyframes in2{ from{ opacity:0; transform: translateY(14px);} to{ opacity:1; transform: translateY(0);} }
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 18px 0 0;
     }
   </style>
 </head>
 
-<body data-v="1">
-  <div class="page">
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header">
     <div class="wrap">
-      <header>
-        <div class="brand" aria-label="Бренд">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="На главную">
           <div class="logo" aria-hidden="true"></div>
-          <div class="t">
+          <div>
             <b>Travel Book</b>
-            <span>видеоурок для путешествий</span>
+            <span>Travel Book + видеоурок</span>
           </div>
+        </a>
+
+        <nav class="menu" aria-label="Навигация">
+          <a href="#inside">Что внутри</a>
+          <a href="#how">Как это работает</a>
+          <a href="#author">Автор</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="navActions">
+          <a class="pill" href="#inside" aria-label="Смотреть содержание">
+            <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:6px;background:rgba(124,255,178,.12);border:1px solid rgba(124,255,178,.18);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v13"/>
+                <path d="M6 17h14"/>
+              </svg>
+            </span>
+            <span>Содержание</span>
+          </a>
+
+          <button class="burger" id="burger" aria-label="Открыть меню">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </button>
+
+          <a class="cta" href="#buy" aria-label="Перейти к покупке">
+            <span>Купить</span>
+            <span aria-hidden="true" style="width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.22)"></span>
+            <span id="priceTop">4 990 ₸</span>
+          </a>
         </div>
+      </div>
 
-        <div class="top-actions">
-          <div class="pill" aria-label="Короткое обещание">
-            <span class="dot" aria-hidden="true"></span>
-            Спокойно общайся в поездке
-          </div>
-        </div>
-      </header>
-
-      <main class="hero" aria-label="Первый экран">
-        <div class="hero-inner">
-          <section>
-            <div class="kicker">
-              <i aria-hidden="true"></i>
-              Набор “на все случаи” — чтобы чувствовать уверенность
-            </div>
-
-            <h1>Путешествуй без стресса</h1>
-
-            <p class="sub">Travel Book + видеоурок</p>
-
-            <p class="sub" style="margin-top:-8px; max-width:60ch;">
-              Готовые фразы, ответы и сценарии для типовых ситуаций: аэропорт, отель, кафе, такси, магазин.
-              Без давления и “учёбы” — только ощущение, что ты справишься.
-            </p>
-
-            <div class="value" aria-label="Преимущества">
-              <div class="chip">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Понятно за 5 минут
-              </div>
-              <div class="chip">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-                Уверенность в разговоре
-              </div>
-              <div class="chip">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M8 7h8M8 12h8M8 17h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Travel Book + видео
-              </div>
-            </div>
-
-            <div class="cta">
-              <a class="btn" href="#buy" id="buyBtn">Купить за <span id="price">2 990 ₽</span> →</a>
-              <a class="btn-secondary" href="#details">Что внутри</a>
-              <div class="fine">Доступ сразу после оплаты. Подойдёт для телефона. Спокойный формат без перегруза.</div>
-            </div>
-          </section>
-
-          <aside class="photo" aria-label="Фото автора">
-            <img src="olga.jpg" alt="Ольга Говердовская" onerror="this.style.display='none';" />
-            <div class="badge" aria-label="Подпись автора">
-              <div class="ava" aria-hidden="true">ОГ</div>
-              <div>
-                <b>Ольга Говердовская</b>
-                <span>Автор Travel Book. Помогаю путешествовать спокойно: понимать, отвечать и не теряться в ситуации.</span>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </main>
+      <div class="drawer" id="drawer" aria-label="Мобильное меню">
+        <a href="#inside">Что внутри</a>
+        <a href="#how">Как это работает</a>
+        <a href="#author">Автор</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+        <a href="#buy">Купить — <span id="priceMobile">4 990 ₸</span></a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <script>
-    // Настройки (клиенту не показываются на странице)
-    const AUTHOR = "Ольга Говердовская";
-    const PRICE  = "2 990 ₽"; // поменяй на фактическую цену
+  <main id="top">
+    <!-- HERO: Variant 1 -->
+    <section class="hero heroVariant" id="hero-v1">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="kickerRow">
+              <div class="kicker reveal">
+                <i aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"/>
+                    <path d="M3.3 7.5L12 12l8.7-4.5"/>
+                    <path d="M12 22V12"/>
+                  </svg>
+                </i>
+                <span>Онлайн-продукт для поездок</span>
+              </div>
+              <div class="kicker reveal d2">
+                <i aria-hidden="true" style="background:rgba(124,255,178,.12);border-color:rgba(124,255,178,.20);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 21s-7-4.35-7-11a7 7 0 0 1 14 0c0 6.65-7 11-7 11z"/>
+                    <path d="M12 10.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z"/>
+                  </svg>
+                </i>
+                <span>Уверенность в любой стране</span>
+              </div>
+            </div>
 
-    // Variant selector: ?v=1|2|3 (без UI на странице)
-    const v = new URLSearchParams(location.search).get("v");
-    if (v === "1" || v === "2" || v === "3") document.body.setAttribute("data-v", v);
+            <h1 class="reveal d2">Путешествуй без стресса</h1>
+            <p class="sub reveal d3"><b>Travel Book + видеоурок</b> по английскому для путешествий — чтобы спокойно решать реальные ситуации: аэропорт, отель, кафе, транспорт, помощь и форс-мажоры.</p>
 
-    document.querySelector(".badge b").textContent = AUTHOR;
-    document.querySelector(".photo img")?.setAttribute("alt", AUTHOR);
-    document.getElementById("price").textContent = PRICE;
+            <div class="heroActions reveal d4">
+              <button class="primary" data-buy>
+                <span>Купить за</span>
+                <span id="priceBtn1">4 990 ₸</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"/>
+                    <path d="M13 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </button>
+              <a class="ghost" href="#inside">
+                <span>Смотреть, что внутри</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14"/>
+                    <path d="M5 12h14"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
 
-    // initials
-    const initials = AUTHOR.split(" ").slice(0,2).map(x => x[0] || "").join("").toUpperCase() || "ОГ";
-    document.querySelector(".ava").textContent = initials;
+            <div class="fineprint reveal d4">
+              <span>Доступ сразу после оплаты</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>Можно проходить с телефона</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>Спокойный темп, без перегруза</span>
+            </div>
+          </div>
+
+          <div class="reveal d3">
+            <div class="photoCard" id="tiltCard">
+              <div class="photoInner">
+                <div class="photo">
+                  <img src="olga.jpg" alt="Ольга — автор Travel Book" loading="eager" />
+                </div>
+                <div class="photoCaption">
+                  <div>
+                    <b>Ольга Говердовская</b>
+                    <span>Автор Travel Book</span>
+                  </div>
+                  <div class="miniBadges" aria-label="Ключевые качества">
+                    <div class="mini">Практично</div>
+                    <div class="mini">Спокойно</div>
+                    <div class="mini">По делу</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid3" style="margin-top:18px;">
+          <div class="card reveal">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 11h18"/>
+                  <path d="M7 4h10"/>
+                  <path d="M7 20h10"/>
+                  <path d="M6 11v9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-9"/>
+                  <path d="M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/>
+                </svg>
+              </div>
+              <h3>Сценарии вместо теории</h3>
+            </div>
+            <p>Короткие ситуации «как в жизни», чтобы быстро сориентироваться и сказать нужное.</p>
+          </div>
+
+          <div class="card reveal d2">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 1 0 10 10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <h3>Экономит время и нервы</h3>
+            </div>
+            <p>Не нужно «учить язык». Нужно понимать и говорить в ключевых точках маршрута.</p>
+          </div>
+
+          <div class="card reveal d3">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21V7a2 2 0 0 0-2-2h-4"/>
+                  <path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+                  <path d="M9 7h6"/>
+                  <path d="M9 11h6"/>
+                  <path d="M9 15h6"/>
+                </svg>
+              </div>
+              <h3>Всегда под рукой</h3>
+            </div>
+            <p>Book — как шпаргалка перед ситуацией. Видеоурок — для закрепления уверенности.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HERO: Variant 2 -->
+    <section class="hero heroVariant" id="hero-v2">
+      <div class="wrap heroCenter">
+        <div class="kickerRow" style="justify-content:center">
+          <div class="kicker reveal">
+            <i aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12c-3.5 6-7.5 9-10 9S5.5 18 2 12c3.5-6 7.5-9 10-9s6.5 3 10 9z"/>
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+            </i>
+            <span>Уверенность, когда нужно говорить</span>
+          </div>
+          <div class="kicker reveal d2">
+            <i aria-hidden="true" style="background:rgba(248,232,168,.12);border-color:rgba(248,232,168,.18);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/>
+                <path d="M8 12l2.5 2.5L16 9"/>
+              </svg>
+            </i>
+            <span>Travel Book + видеоурок</span>
+          </div>
+        </div>
+
+        <h1 class="reveal d2">Путешествуй без стресса</h1>
+        <p class="sub reveal d3">Travel Book + видеоурок по английскому для путешествий — чтобы чувствовать себя спокойно в аэропорту, отеле, транспорте и любых бытовых ситуациях.</p>
+
+        <div class="heroActions reveal d4">
+          <button class="primary" data-buy>
+            <span>Купить за</span>
+            <span id="priceBtn2">4 990 ₸</span>
+            <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14"/>
+                <path d="M13 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </button>
+          <a class="ghost" href="#how">
+            <span>Как это работает</span>
+            <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+                <div class="heroBackdrop reveal d4" style="margin-left:auto;margin-right:auto;">
+          <div class="inner">
+            <div class="floatCards">
+              <div class="float">
+                <b>Ситуации, а не «уроки»</b>
+                <span>Готовые фразы и шаблоны под реальные моменты поездки. Без перегруза правилами.</span>
+              </div>
+              <div class="float">
+                <b>Понятно, даже если уровень «базовый»</b>
+                <span>Формулировки простые и живые — чтобы говорить, а не переводить в голове.</span>
+              </div>
+              <div class="float">
+                <b>Переход от тревоги к спокойствию</b>
+                <span>Видеоурок помогает «включиться» и закрепить уверенность перед поездкой.</span>
+              </div>
+            </div>
+
+            <div class="photoCard">
+              <div class="photoInner">
+                <div class="photo">
+                  <img src="olga.jpg" alt="Ольга — автор Travel Book" loading="eager" />
+                </div>
+                <div class="photoCaption">
+                  <div>
+                    <b>Ольга Говердовская</b>
+                    <span>Автор Travel Book</span>
+                  </div>
+                  <div class="miniBadges">
+                    <div class="mini">Практика</div>
+                    <div class="mini">Поддержка</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HERO: Variant 3 -->
+    <section class="hero heroVariant" id="hero-v3">
+      <div class="wrap heroAsym">
+        <div class="asymGrid">
+          <div>
+            <div class="kickerRow">
+              <div class="kicker reveal">
+                <i aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18"/>
+                    <path d="M12 3v18"/>
+                  </svg>
+                </i>
+                <span>Спокойная подготовка к поездке</span>
+              </div>
+              <div class="kicker reveal d2">
+                <i aria-hidden="true" style="background:rgba(132,184,255,.14);border-color:rgba(132,184,255,.22);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3 7h7l-5.6 4 2.1 7L12 16l-6.5 4 2.1-7L2 9h7z"/>
+                  </svg>
+                </i>
+                <span>Travel Book + видеоурок</span>
+              </div>
+            </div>
+
+            <h1 class="reveal d2">Путешествуй без стресса</h1>
+            <p class="sub reveal d3">Когда в поездке нужно говорить — хочется не «учиться», а <b>быстро понимать, что сказать</b>. Этот продукт даёт опору: сценарии, фразы и простую практику.</p>
+
+            <div class="heroActions reveal d4">
+              <button class="primary" data-buy>
+                <span>Купить за</span>
+                <span id="priceBtn3">4 990 ₸</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"/>
+                    <path d="M13 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </button>
+              <a class="ghost" href="#reviews">
+                <span>Посмотреть отзывы</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19l4-4h12V5H4v14z"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            <div class="chipRow reveal d4" aria-label="Ключевые преимущества">
+              <div class="chip">Аэропорт • регистрация • посадка</div>
+              <div class="chip">Отель • заселение • проблемы</div>
+              <div class="chip">Кафе • еда • аллергии</div>
+              <div class="chip">Транспорт • билеты • направления</div>
+            </div>
+          </div>
+
+          <div class="sideCol reveal d3">
+            <div class="orb" aria-hidden="true"></div>
+            <div class="stack">
+              <div class="photoCard" id="tiltCard2">
+                <div class="photoInner">
+                  <div class="photo">
+                    <img src="olga.jpg" alt="Ольга — автор Travel Book" loading="eager" />
+                  </div>
+                  <div class="photoCaption">
+                    <div>
+                      <b>Ольга Говердовская</b>
+                      <span>Автор Travel Book</span>
+                    </div>
+                    <div class="miniBadges">
+                      <div class="mini">Ясно</div>
+                      <div class="mini">Уверенно</div>
+                      <div class="mini">Без шума</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="h">
+                  <div class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5-6.5-4.8-6.5 4.8L8 14 2 9.5h7.5z"/>
+                    </svg>
+                  </div>
+                  <h3>Фокус на уверенности</h3>
+                </div>
+                <p>Не «курс языка», а спокойный инструмент для поездки: что сказать, как спросить, как уточнить.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE -->
+    <section id="inside">
+      <div class="wrap">
+        <div class="sectionTitle reveal">
+          <div>
+            <h2>Что внутри</h2>
+            <p>Собрано так, чтобы в поездке вы не вспоминали теорию — а уверенно действовали по ситуации.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="panel reveal d2">
+            <h2>Travel Book</h2>
+            <p class="lead">Структурированный путеводитель по типовым ситуациям. Коротко, ясно, без «воды».</p>
+
+            <div class="list">
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Готовые фразы и шаблоны</b>
+                  <span>Просить, уточнять, объяснять — на человеческом английском.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Сценарии «что делать если»</b>
+                  <span>Ошибки в брони, перенос рейса, потеря вещей, проблемы в отеле.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Короткие подсказки по вежливости</b>
+                  <span>Как звучать спокойно и уверенно, чтобы вас понимали и помогали.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel reveal d3">
+            <h2>Видеоурок</h2>
+            <p class="lead">Собирает всё в понятную систему и снимает напряжение: «я смогу».</p>
+
+            <div class="list">
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Переход от «знаю» к «говорю»</b>
+                  <span>Как перестать сомневаться и начать использовать фразы в реальности.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Тренировка на живых примерах</b>
+                  <span>Мини-практика, которая ощущается безопасно и быстро даёт результат.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Подготовка «за вечер»</b>
+                  <span>Чтобы накануне поездки вы собрались и поехали уверенно.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section id="how">
+      <div class="wrap">
+        <div class="sectionTitle reveal">
+          <div>
+            <h2>Как это работает</h2>
+            <p>Три шага, которые дают ощущение контроля в поездке — без «учебного» давления.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card reveal">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 7h16"/>
+                  <path d="M4 12h16"/>
+                  <path d="M4 17h16"/>
+                </svg>
+              </div>
+              <h3>1) Выбираете ситуацию</h3>
+            </div>
+            <p>Открываете раздел Travel Book под ваш момент: аэропорт, отель, кафе, транспорт или помощь.</p>
+          </div>
+
+          <div class="card reveal d2">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+              </div>
+              <h3>2) Берёте готовую фразу</h3>
+            </div>
+            <p>Используете короткие шаблоны, которые звучат естественно и помогают быстро договориться.</p>
+          </div>
+
+          <div class="card reveal d3">
+            <div class="h">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12l-4-4v3H3v2h15v3l4-4z"/>
+                </svg>
+              </div>
+              <h3>3) Закрепляете уроком</h3>
+            </div>
+            <p>Видеоурок помогает убрать внутренний «ступор» и перейти к уверенной речи в реальных ситуациях.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- AUTHOR -->
+    <section id="author">
+      <div class="wrap">
+        <div class="sectionTitle reveal">
+          <div>
+            <h2>Автор</h2>
+            <p>Живой подход: без «сверху вниз», без стресса, без лишней теории — только то, что работает в поездке.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="panel reveal d2">
+            <h2>Ольга Говердовская</h2>
+            <p class="lead">Этот продукт создан, чтобы вы чувствовали опору и спокойствие, когда нужно говорить по-английски в путешествии.</p>
+
+            <div class="list">
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Понятно и структурно</b>
+                  <span>Ситуации разложены по шагам — чтобы не теряться и быстро действовать.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Фразы, которые реально говорят</b>
+                  <span>Без «книжных» оборотов — звучит естественно и помогает получить помощь.</span>
+                </div>
+              </div>
+
+              <div class="li">
+                <div class="check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <b>Фокус на спокойствии</b>
+                  <span>Продукт продаёт уверенность: вы знаете, что делать и что сказать.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel reveal d3">
+            <div class="photoCard" style="max-width: 520px; margin-left:auto; margin-right:auto;">
+              <div class="photoInner">
+                <div class="photo" style="aspect-ratio: 16/15;">
+                  <img src="olga.jpg" alt="Ольга Говердовская" loading="lazy" />
+                </div>
+                <div class="photoCaption">
+                  <div>
+                    <b>Ольга Говердовская</b>
+                    <span>Автор Travel Book</span>
+                  </div>
+                  <div class="miniBadges">
+                    <div class="mini">Travel</div>
+                    <div class="mini">English</div>
+                    <div class="mini">Confidence</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px; color: var(--muted); line-height:1.65; font-size:14px;">
+              В правках участвуете вы — решения принимаются совместно. Концепция и стратегия продукта остаются авторскими: дизайнер реализует и усиливает, не переизобретает смысл.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="wrap">
+        <div class="sectionTitle reveal">
+          <div>
+            <h2>Отзывы</h2>
+            <p>Ниже — примеры оформления блока (тексты можно заменить на реальные отзывы в любой момент).</p>
+          </div>
+        </div>
+
+        <div class="testGrid">
+          <div class="quote reveal">
+            <p>Впервые поехала без ощущения, что «я ничего не смогу сказать». В нужные моменты просто открывала раздел — и спокойно решала вопрос.</p>
+            <div class="who">Мария • поездка в Европу</div>
+          </div>
+          <div class="quote reveal d2">
+            <p>Понравилось, что нет давления «учись». Это реально про уверенность. Пара фраз — и ты уже общаешься нормально.</p>
+            <div class="who">Алия • путешествие с семьёй</div>
+          </div>
+          <div class="quote reveal d3">
+            <p>Видеоурок помог убрать ступор. После него Travel Book ощущается как опора, а не как учебник.</p>
+            <div class="who">Данияр • рабочая поездка</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="sectionTitle reveal">
+          <div>
+            <h2>FAQ</h2>
+            <p>Короткие ответы, без «воды». Можно расширять по мере запуска и вопросов от покупателей.</p>
+          </div>
+        </div>
+
+        <div class="faq reveal d2">
+          <details open>
+            <summary>
+              <span>Это курс английского?</span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="ans">Нет. Это инструмент для уверенных поездок: Travel Book с ситуациями и фразами + видеоурок, который помогает говорить спокойнее и увереннее.</div>
+          </details>
+
+          <details>
+            <summary>
+              <span>Подойдёт, если уровень английского базовый?</span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="ans">Да. Формулировки простые, практичные и «живые». Цель — уверенно решить ситуацию, а не учить сложные правила.</div>
+          </details>
+
+          <details>
+            <summary>
+              <span>Как быстро я получу доступ?</span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="ans">Сразу после оплаты. Продукт удобно проходить с телефона и возвращаться к нужным разделам перед конкретной ситуацией.</div>
+          </details>
+
+          <details>
+            <summary>
+              <span>Можно ли пользоваться прямо в поездке?</span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="ans">Да. Travel Book рассчитан на быстрый доступ: открыть нужный раздел, взять фразу, уточнить детали — и продолжать движение по маршруту.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUY -->
+    <section id="buy" class="final">
+      <div class="wrap">
+        <div class="ctaBlock reveal">
+          <div class="ctaTop">
+            <div>
+              <h2>Готовы путешествовать спокойнее?</h2>
+              <p>Travel Book + видеоурок — для уверенных поездок без стресса. Никаких «громких обещаний», только практичная опора.</p>
+            </div>
+
+            <div class="heroActions" style="margin:0">
+              <button class="primary" data-buy>
+                <span>Купить за</span>
+                <span id="priceBtn4">4 990 ₸</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"/>
+                    <path d="M13 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </button>
+              <a class="ghost" href="#top">
+                <span>Наверх</span>
+                <span aria-hidden="true" style="display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 19V5"/>
+                    <path d="M5 12l7-7 7 7"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="fineprint" style="margin-top:14px">
+            <span>Доступ сразу</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Подходит для телефона</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Спокойный формат</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="year"></span> Travel Book</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <a class="pill" href="#faq">FAQ</a>
+          <a class="pill" href="#buy">Купить</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script>
+    (function () {
+      const PRICE = "4 990 ₸";         // цена на кнопках
+      const BUY_LINK = "#";            // ссылка покупки (вставьте вашу)
+      const AUTHOR_IMG = "olga.jpg";   // имя файла фото
+
+      // Apply price everywhere
+      const ids = ["priceTop","priceMobile","priceBtn1","priceBtn2","priceBtn3","priceBtn4"];
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = PRICE; });
+
+      // Buy buttons
+      document.querySelectorAll("[data-buy]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (BUY_LINK && BUY_LINK !== "#") window.location.href = BUY_LINK;
+          else {
+            // Soft feedback without alerts
+            btn.style.transform = "translateY(0)";
+            btn.style.filter = "brightness(0.98)";
+            setTimeout(() => { btn.style.filter = ""; }, 160);
+          }
+        });
+      });
+
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile drawer
+      const burger = document.getElementById("burger");
+      const drawer = document.getElementById("drawer");
+      burger?.addEventListener("click", () => drawer.classList.toggle("open"));
+      drawer?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => drawer.classList.remove("open")));
+
+      // Hero variant switch by URL param: ?v=1|2|3
+      const url = new URL(window.location.href);
+      const v = (url.searchParams.get("v") || "1").trim();
+      const map = { "1": "hero-v1", "2": "hero-v2", "3": "hero-v3" };
+      const targetId = map[v] || "hero-v1";
+      document.querySelectorAll(".heroVariant").forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(targetId);
+      if (target) target.classList.add("active");
+
+      // Reveal on scroll
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add("in");
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      // Top progress bar
+      const progress = document.getElementById("progress");
+      const onScroll = () => {
+        const h = document.documentElement;
+        const scrollTop = h.scrollTop || document.body.scrollTop;
+        const scrollHeight = h.scrollHeight - h.clientHeight;
+        const p = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progress.style.width = p.toFixed(2) + "%";
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Subtle tilt on desktop (performance-safe)
+      const canTilt = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function enableTilt(card){
+        if (!card || !canTilt || prefersReduced) return;
+        let raf = null;
+        const max = 8;
+
+        const move = (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            const rx = (-y * max).toFixed(2);
+            const ry = (x * max).toFixed(2);
+            card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-1px)`;
+          });
+        };
+
+        const leave = () => {
+          if (raf) cancelAnimationFrame(raf);
+          card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+        };
+
+        card.addEventListener("mousemove", move);
+        card.addEventListener("mouseleave", leave);
+      }
+      enableTilt(document.getElementById("tiltCard"));
+      enableTilt(document.getElementById("tiltCard2"));
+
+      // Ensure author image exists logically (no network request, just set attribute)
+      document.querySelectorAll('img[src="olga.jpg"]').forEach(img => img.setAttribute("src", AUTHOR_IMG));
+    })();
   </script>
 </body>
 </html>
+  
