@@ -1,44 +1,46 @@
 <!doctype html>
-<html lang="ru" class="no-js">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
 
   <title>Путешествуй без стресса — Travel Book + видеоурок</title>
-  <meta name="description" content="Travel Book + видеоурок по английскому для путешествий: готовые сценарии и фразы, чтобы чувствовать уверенность в поездке без стресса." />
-  <meta name="theme-color" content="#0B1220" />
+  <meta name="description" content="Travel Book + видеоурок по английскому для путешествий: сценарии, фразы и опора, чтобы в поездке говорить спокойно и уверенно — без стресса." />
 
-  <meta property="og:title" content="Путешествуй без стресса" />
-  <meta property="og:description" content="Travel Book + видеоурок: сценарии и опора, чтобы в поездке говорить спокойно и уверенно." />
+  <meta property="og:title" content="Путешествуй без стресса — Travel Book + видеоурок" />
+  <meta property="og:description" content="Готовые сценарии и фразы для путешествий + видео, как говорить без ступора. Открыл в телефоне — применил в поездке." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/img/og.jpg" />
-  <meta property="og:locale" content="ru_RU" />
 
-  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="icon" href="assets/img/og.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
-  <script>
-    document.documentElement.classList.remove('no-js');
-    document.documentElement.classList.add('js');
-  </script>
 </head>
 
 <body>
-  <a class="skip-link" href="#hero">Перейти к содержанию</a>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
 
   <header class="site-header" data-header>
     <div class="container header-inner">
-      <a class="brand" href="#hero" aria-label="На главную">
+      <a class="brand" href="#top" aria-label="На верх страницы">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">Travel Book</span>
+        <span class="brand-text">
+          <span class="brand-title">Travel Book</span>
+          <span class="brand-sub">+ видеоурок</span>
+        </span>
       </a>
 
-      <nav class="nav" aria-label="Навигация по странице" data-nav>
+      <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle-lines" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" data-nav>
         <a class="nav-link" href="#inside">Что внутри</a>
-        <a class="nav-link" href="#purchase">Форматы</a>
+        <a class="nav-link" href="#formats">Пакет</a>
         <a class="nav-link" href="#how">Как работает</a>
         <a class="nav-link" href="#author">Автор</a>
         <a class="nav-link" href="#reviews">Отзывы</a>
@@ -47,405 +49,289 @@
       </nav>
 
       <div class="header-cta">
-        <a class="btn btn-secondary btn-sm" href="#purchase">Смотреть пакеты</a>
-        <a class="btn btn-primary btn-sm" data-buy-top href="#purchase">Купить за [Цена]</a>
-      </div>
-
-      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" data-burger>
-        <span class="burger-lines" aria-hidden="true"></span>
-      </button>
-    </div>
-
-    <div class="mobile-menu" data-mobile-menu>
-      <div class="mobile-menu-inner">
-        <a class="mobile-link" href="#inside">Что внутри</a>
-        <a class="mobile-link" href="#purchase">Форматы</a>
-        <a class="mobile-link" href="#how">Как работает</a>
-        <a class="mobile-link" href="#author">Автор</a>
-        <a class="mobile-link" href="#reviews">Отзывы</a>
-        <a class="mobile-link" href="#faq">FAQ</a>
-        <a class="mobile-link" href="#contacts">Контакты</a>
-        <div class="mobile-actions">
-          <a class="btn btn-secondary" href="#purchase">Смотреть пакеты</a>
-          <a class="btn btn-primary" data-buy-top-mobile href="#purchase">Купить за [Цена]</a>
-        </div>
+        <a class="btn btn-secondary btn-sm" href="#formats">Смотреть пакет</a>
+        <a class="btn btn-primary btn-sm" href="#order" data-buy-button>
+          Купить за <span data-price-inline>—</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="section hero">
+  <main id="main">
+    <section id="top" class="section hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="pill reveal" data-reveal>
-            <span class="dot" aria-hidden="true"></span>
-            Онлайн-пакет для путешествий
-          </div>
-
-          <h1 class="h1 reveal" data-reveal>
-            Путешествуй без стресса
-          </h1>
-
-          <p class="subhead reveal" data-reveal>
-            Travel Book + видеоурок
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Travel Book + видеоурок</p>
+          <h1 class="h1">Путешествуй без стресса</h1>
+          <p class="lead">
+            Фразы, сценарии и опора, чтобы в поездке говорить спокойно и уверенно — без паники в аэропорту, отеле и городе.
           </p>
 
-          <p class="lead reveal" data-reveal>
-            Готовые фразы, сценарии и опора, чтобы в поездке говорить спокойно и уверенно — без паники в аэропорту, отеле и городе.
-          </p>
+          <ul class="mini-points">
+            <li>Готовые сценарии: аэропорт, отель, кафе, такси</li>
+            <li>Открыл в телефоне — применил в дороге</li>
+            <li>Видео: как говорить без ступора</li>
+          </ul>
 
-          <div class="hero-bullets reveal" data-reveal>
-            <div class="bullet">
-              <span class="bullet-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Сценарии: аэропорт, отель, кафе, такси
-            </div>
-            <div class="bullet">
-              <span class="bullet-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M8 7h8M8 12h8M8 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-              Можно открыть в телефоне в дороге
-            </div>
-            <div class="bullet">
-              <span class="bullet-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 20V10m0 0l-3 3m3-3l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Видео: как говорить без ступора
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#order" data-buy-button>
+              Купить за <span data-price-inline>—</span>
+            </a>
+            <a class="btn btn-secondary" href="#inside">Посмотреть, что внутри</a>
           </div>
 
-          <div class="hero-actions reveal" data-reveal>
-            <a class="btn btn-primary" data-buy href="#purchase">Купить за [Цена]</a>
-            <a class="btn btn-secondary" href="#inside">Что внутри</a>
-          </div>
-
-          <div class="trust-row reveal" data-reveal>
-            <div class="trust-item">
-              <span class="trust-k">5–10 мин</span>
-              <span class="trust-v">на то, чтобы понять, что сказать</span>
+          <div class="trust-row">
+            <div class="trust-chip">
+              <span class="trust-dot" aria-hidden="true"></span>
+              <span>Доступ сразу после оплаты</span>
             </div>
-            <div class="trust-item">
-              <span class="trust-k">0</span>
-              <span class="trust-v">ощущения «я потерялся»</span>
+            <div class="trust-chip">
+              <span class="trust-dot" aria-hidden="true"></span>
+              <span>Подходит для поездок “впервые” и “после паузы”</span>
             </div>
-            <div class="trust-item">
-              <span class="trust-k">1</span>
-              <span class="trust-v">пакет — в телефоне и всегда под рукой</span>
+            <div class="trust-chip">
+              <span class="trust-dot" aria-hidden="true"></span>
+              <span>Можно использовать в телефоне офлайн</span>
             </div>
           </div>
         </div>
 
-        <aside class="hero-media reveal" data-reveal>
-          <div class="media-card">
-            <div class="author-card">
-              <img class="author-photo" src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" decoding="async" />
-              <div class="author-meta">
-                <div class="author-name">Ольга Говердовская</div>
-                <div class="author-role">Автор продукта</div>
-              </div>
-            </div>
-
-            <div class="mockups">
-              <div class="mockup book">
-                <img src="assets/img/book-cover.png" alt="Обложка Travel Book" loading="lazy" decoding="async" />
-                <div class="mockup-tag">Travel Book</div>
-              </div>
-              <div class="mockup video" aria-label="Видео-урок">
-                <div class="video-top">
-                  <span class="video-dot" aria-hidden="true"></span>
-                  <span class="video-dot" aria-hidden="true"></span>
-                  <span class="video-dot" aria-hidden="true"></span>
-                </div>
-                <div class="video-body">
-                  <div class="play" aria-hidden="true"></div>
-                  <div class="video-caption">
-                    <div class="video-title">Видеоурок</div>
-                    <div class="video-sub">Как говорить уверенно</div>
-                  </div>
+        <div class="hero-media reveal">
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <div class="author-chip">
+                <img class="author-avatar" src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" />
+                <div class="author-chip-text">
+                  <div class="author-name">Ольга Говердовская</div>
+                  <div class="author-role">Автор</div>
                 </div>
               </div>
+              <div class="soft-badge">Готовые сценарии</div>
             </div>
 
-            <div class="media-note">
-              <div class="media-note-title">Идея простая</div>
-              <div class="media-note-text">Не «учить язык», а иметь понятные фразы и сценарии, чтобы в моменте спокойно справиться.</div>
+            <div class="hero-mockups">
+              <figure class="mockup book">
+                <img src="assets/img/book-cover.png" alt="Обложка Travel Book" loading="lazy" />
+                <figcaption>Travel Book</figcaption>
+              </figure>
+
+              <figure class="mockup video">
+                <div class="video-thumb" role="img" aria-label="Превью видеоурока">
+                  <span class="play" aria-hidden="true"></span>
+                  <span class="video-label">Видеоурок</span>
+                </div>
+                <figcaption>Как говорить без ступора</figcaption>
+              </figure>
+            </div>
+
+            <div class="hero-card-bottom">
+              <div class="metric">
+                <div class="metric-num">15+</div>
+                <div class="metric-text">типовых ситуаций</div>
+              </div>
+              <div class="metric">
+                <div class="metric-num">60s</div>
+                <div class="metric-text">чтобы найти фразу</div>
+              </div>
+              <div class="metric">
+                <div class="metric-num">0</div>
+                <div class="metric-text">лишней теории</div>
+              </div>
             </div>
           </div>
-        </aside>
-      </div>
 
-      <div class="hero-bg" aria-hidden="true"></div>
+          <div class="hero-bg" aria-hidden="true">
+            <img src="assets/img/hero-travel.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- WHAT'S INSIDE -->
     <section id="inside" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Коротко: что внутри</h2>
-          <p class="p-muted reveal" data-reveal>Два компонента, которые работают вместе: структурированный Travel Book и короткий видеоурок для уверенности.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Коротко: что внутри</h2>
+          <p class="sub">
+            Всё построено так, чтобы в поездке было ощущение: “я знаю, что сказать”.
+          </p>
         </div>
 
         <div class="grid-4">
-          <article class="card reveal" data-reveal>
-            <div class="card-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v16H6z" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3 class="h3">Travel Book</h3>
-            <p class="p-muted">Сценарии и фразы, разложенные по ситуациям — чтобы быстро найти нужное.</p>
+          <article class="card reveal">
+            <div class="icon">✦</div>
+            <h3 class="h3">Сценарии</h3>
+            <p class="p">Аэропорт, паспортный контроль, отель, кафе, такси, покупки, город, безопасность.</p>
           </article>
 
-          <article class="card reveal" data-reveal>
-            <div class="card-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="2"/><path d="M10 10l5 2.5L10 15V10z" fill="currentColor"/></svg>
-            </div>
-            <h3 class="h3">Видеоурок</h3>
-            <p class="p-muted">Понятная схема: как говорить без ступора и что делать, когда «вылетели слова».</p>
+          <article class="card reveal">
+            <div class="icon">✦</div>
+            <h3 class="h3">Готовые фразы</h3>
+            <p class="p">Коротко и по делу: спросить, уточнить, объяснить, попросить, решить проблему.</p>
           </article>
 
-          <article class="card reveal" data-reveal>
-            <div class="card-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l4 8h8l-6 5 2 9-8-5-8 5 2-9-6-5h8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </div>
+          <article class="card reveal">
+            <div class="icon">✦</div>
             <h3 class="h3">Опора в моменте</h3>
-            <p class="p-muted">Не надо «вспоминать правила». Открыли — увидели — сказали.</p>
+            <p class="p">Структура и подсказки, чтобы не “зависать” и не теряться в разговоре.</p>
           </article>
 
-          <article class="card reveal" data-reveal>
-            <div class="card-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h10v18H7z" stroke="currentColor" stroke-width="2"/><path d="M9 7h6M9 11h6M9 15h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3 class="h3">Удобный формат</h3>
-            <p class="p-muted">Телефон/планшет/ноутбук. Быстрый доступ, аккуратная структура, без перегруза.</p>
+          <article class="card reveal">
+            <div class="icon">✦</div>
+            <h3 class="h3">Видеоурок</h3>
+            <p class="p">Как говорить увереннее: темп, простые конструкции, что делать, если “забыл слова”.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- FORMATS / PURCHASE -->
-    <section id="purchase" class="section section-alt">
+    <section id="formats" class="section section-alt">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Форматы / Что входит в пакет</h2>
-          <p class="p-muted reveal" data-reveal>Выберите формат. Всё построено вокруг результата: спокойствие и уверенность в поездке.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Форматы и состав пакета</h2>
+          <p class="sub">Один пакет, собранный под реальные задачи путешественника.</p>
         </div>
 
-        <div class="pricing">
-          <article class="price-card featured reveal" data-reveal>
+        <div class="pricing-grid">
+          <div class="price-card reveal">
             <div class="price-top">
-              <div class="price-badge">Рекомендуем</div>
+              <div class="tag">Основной пакет</div>
               <h3 class="h3">Travel Book + видеоурок</h3>
-              <p class="p-muted">Полный пакет для уверенного общения в типовых ситуациях путешествия.</p>
+              <p class="p muted">Доступ в цифровом формате. Можно открыть с телефона.</p>
             </div>
 
-            <div class="price">
-              <div class="price-val" data-price>[Цена]</div>
-              <div class="price-note">Доступ сразу после оплаты</div>
-            </div>
-
-            <ul class="list">
-              <li>Сценарии и фразы по ситуациям</li>
-              <li>Шаблоны диалогов «как сказать»</li>
-              <li>Видеоурок: уверенная речь без ступора</li>
-              <li>Быстрый поиск нужной фразы</li>
+            <ul class="checklist">
+              <li>Travel Book (PDF/онлайн-доступ)</li>
+              <li>Видеоурок (ссылкой)</li>
+              <li>Сценарии: аэропорт / отель / кафе / такси</li>
+              <li>Фразы для решения проблемных ситуаций</li>
+              <li>Короткие подсказки “как сказать проще”</li>
             </ul>
 
-            <div class="price-actions">
-              <a class="btn btn-primary" data-pay href="https://example.com">Перейти к оплате</a>
-              <a class="btn btn-secondary" href="#how">Как это работает</a>
-            </div>
-
-            <div class="legal-hint">
-              Нажимая «Перейти к оплате», вы соглашаетесь с
-              <a href="legal/offer.html">офертой</a> и
-              <a href="legal/privacy.html">политикой</a>.
-            </div>
-          </article>
-
-          <aside class="price-side reveal" data-reveal>
-            <div class="side-card">
-              <h3 class="h3">Нужен бесплатный старт?</h3>
-              <p class="p-muted">Получите короткую шпаргалку с базовыми фразами для поездки.</p>
-
-              <form class="form" data-form="lead">
-                <label class="field">
-                  <span class="label">Email</span>
-                  <input class="input" type="email" name="email" placeholder="you@mail.com" autocomplete="email" required />
-                </label>
-
-                <label class="check">
-                  <input type="checkbox" name="agree" required />
-                  <span>
-                    Согласен(на) на обработку ПД и условия
-                    <a href="legal/personal-data.html">согласия</a>.
-                    <a href="legal/privacy.html">Политика</a>.
-                  </span>
-                </label>
-
-                <button class="btn btn-secondary" type="submit">Получить шпаргалку</button>
-
-                <div class="form-note">
-                  При желании вы также можете дать
-                  <a href="legal/mailing.html">согласие на рассылки</a>.
-                </div>
-
-                <div class="form-status" aria-live="polite" data-form-status></div>
-              </form>
-            </div>
-
-            <div class="side-card mini">
-              <div class="mini-row">
-                <div class="mini-k">Подходит, если:</div>
-                <div class="mini-v">вы хотите «не теряться» и говорить по делу.</div>
+            <div class="price-bottom">
+              <div class="price">
+                <span class="price-num" data-price-block>—</span>
+                <span class="price-note">разовый платеж</span>
               </div>
-              <div class="mini-row">
-                <div class="mini-k">Не нужно:</div>
-                <div class="mini-v">учить грамматику и правила в поездке.</div>
-              </div>
+              <a class="btn btn-primary w-100" href="#order" data-buy-button>Купить за <span data-price-inline>—</span></a>
+              <a class="btn btn-secondary w-100" href="#how">Как это работает</a>
             </div>
-          </aside>
+          </div>
+
+          <div class="side-card reveal">
+            <h3 class="h3">Кому особенно подходит</h3>
+            <p class="p muted">Если тебе важно не “учить язык”, а спокойно справляться в реальных диалогах.</p>
+
+            <div class="pill-list">
+              <span class="pill">первый выезд</span>
+              <span class="pill">самостоятельные поездки</span>
+              <span class="pill">пересадки и аэропорты</span>
+              <span class="pill">вопросы в отеле</span>
+              <span class="pill">еда и сервис</span>
+              <span class="pill">неожиданные ситуации</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3 class="h3">Результат</h3>
+            <ul class="mini-points compact">
+              <li>меньше тревоги в поездке</li>
+              <li>быстрее ориентируешься в диалогах</li>
+              <li>легче решаешь бытовые вопросы</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
     <section id="how" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Как это работает</h2>
-          <p class="p-muted reveal" data-reveal>Короткий и понятный путь: открыли — применили — почувствовали уверенность.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Как это работает</h2>
+          <p class="sub">Простая схема: открыл — применил — почувствовал уверенность.</p>
         </div>
 
         <div class="steps">
-          <div class="step reveal" data-reveal>
-            <div class="step-n">01</div>
+          <div class="step reveal">
+            <div class="step-num">01</div>
             <div class="step-body">
-              <div class="step-t">Открываете Travel Book</div>
-              <div class="step-d">Выбираете ситуацию: аэропорт, отель, кафе, город.</div>
+              <h3 class="h3">Получаешь доступ</h3>
+              <p class="p muted">После оплаты — ссылка на материалы и видео.</p>
             </div>
           </div>
 
-          <div class="step reveal" data-reveal>
-            <div class="step-n">02</div>
+          <div class="step reveal">
+            <div class="step-num">02</div>
             <div class="step-body">
-              <div class="step-t">Берёте фразу и шаблон</div>
-              <div class="step-d">Готовые варианты «как сказать» — без долгих раздумий.</div>
+              <h3 class="h3">Открываешь нужный сценарий</h3>
+              <p class="p muted">Аэропорт, отель, кафе, такси — под конкретную ситуацию.</p>
             </div>
           </div>
 
-          <div class="step reveal" data-reveal>
-            <div class="step-n">03</div>
+          <div class="step reveal">
+            <div class="step-num">03</div>
             <div class="step-body">
-              <div class="step-t">Смотрите видеоурок</div>
-              <div class="step-d">Схема, как говорить уверенно и что делать, если «застряли».</div>
+              <h3 class="h3">Берёшь готовую фразу</h3>
+              <p class="p muted">Коротко и уверенно — без сложной грамматики.</p>
             </div>
           </div>
 
-          <div class="step reveal" data-reveal>
-            <div class="step-n">04</div>
+          <div class="step reveal">
+            <div class="step-num">04</div>
             <div class="step-body">
-              <div class="step-t">Применяете в поездке</div>
-              <div class="step-d">Появляется ощущение контроля: вы знаете, что говорить дальше.</div>
+              <h3 class="h3">Смотришь видео при необходимости</h3>
+              <p class="p muted">Как говорить проще, что делать, если “ступор”.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOR WHO -->
-    <section id="forwho" class="section section-alt">
+    <section id="after" class="section section-alt">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Кому подходит</h2>
-          <p class="p-muted reveal" data-reveal>Если вы узнали себя хотя бы в одном пункте — пакет закроет основной стресс поездки.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Что меняется в поездке</h2>
+          <p class="sub">Не про “знать язык”. Про ощущение опоры в моменте.</p>
         </div>
 
         <div class="grid-3">
-          <article class="card reveal" data-reveal>
-            <h3 class="h3">Перед поездкой</h3>
-            <p class="p-muted">Хочется подготовиться и не нервничать из-за языка.</p>
+          <article class="card reveal">
+            <h3 class="h3">Больше спокойствия</h3>
+            <p class="p muted">Ты заранее понимаешь, что делать и что говорить в типовых ситуациях.</p>
           </article>
-
-          <article class="card reveal" data-reveal>
-            <h3 class="h3">В поездке</h3>
-            <p class="p-muted">Нужно быстро сказать «по делу» в аэропорту/отеле/кафе.</p>
+          <article class="card reveal">
+            <h3 class="h3">Меньше “ступора”</h3>
+            <p class="p muted">Есть готовые короткие конструкции и подсказки, как сказать проще.</p>
           </article>
-
-          <article class="card reveal" data-reveal>
-            <h3 class="h3">После пауз</h3>
-            <p class="p-muted">Раньше учили, но в реальности сложно говорить без ступора.</p>
+          <article class="card reveal">
+            <h3 class="h3">Быстрее решаешь вопросы</h3>
+            <p class="p muted">Отель, кафе, город — бытовые диалоги перестают быть стрессом.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- RESULT -->
-    <section id="result" class="section">
+    <section id="author" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Результат после</h2>
-          <p class="p-muted reveal" data-reveal>Главный эффект — спокойствие и уверенность, потому что у вас есть план и опора.</p>
-        </div>
+        <div class="author-grid">
+          <div class="author-photo reveal">
+            <img src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" />
+          </div>
 
-        <div class="result-grid">
-          <div class="result-card reveal" data-reveal>
-            <div class="result-k">Вы спокойнее</div>
-            <div class="result-v">Меньше тревоги: вы знаете, что сказать и как построить диалог.</div>
-          </div>
-          <div class="result-card reveal" data-reveal>
-            <div class="result-k">Вы понятнее</div>
-            <div class="result-v">Короткие, рабочие фразы — без сложных конструкций.</div>
-          </div>
-          <div class="result-card reveal" data-reveal>
-            <div class="result-k">Вы быстрее</div>
-            <div class="result-v">Не тратите время на поиски: сценарии разложены по ситуациям.</div>
-          </div>
-          <div class="result-card reveal" data-reveal>
-            <div class="result-k">Вы увереннее</div>
-            <div class="result-v">Даже если не идеально — вы справляетесь и двигаетесь дальше.</div>
-          </div>
-        </div>
-      </div>
-    </section>
+          <div class="author-info reveal">
+            <h2 class="h2">Автор</h2>
+            <p class="lead-sm">
+              Ольга Говердовская. Помогаю путешествовать увереннее — через сценарии, простые фразы и понятные опоры.
+            </p>
 
-    <!-- AUTHOR -->
-    <section id="author" class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Автор</h2>
-          <p class="p-muted reveal" data-reveal>Живое фото и факты доверия — в спокойной, профессиональной подаче.</p>
-        </div>
-
-        <div class="author-block reveal" data-reveal>
-          <div class="author-left">
-            <img class="author-photo-lg" src="assets/img/author.jpg" alt="Ольга Говердовская" loading="lazy" decoding="async" />
-          </div>
-          <div class="author-right">
-            <h3 class="h3">Ольга Говердовская</h3>
-            <p class="p-muted">Помогаю путешествовать уверенно: не через «учёбу ради учёбы», а через понятные сценарии и рабочие фразы.</p>
-
-            <div class="facts">
-              <div class="fact">
-                <div class="fact-k">Формат</div>
-                <div class="fact-v">коротко, структурно, без перегруза</div>
-              </div>
-              <div class="fact">
-                <div class="fact-k">Цель</div>
-                <div class="fact-v">уверенность в реальных ситуациях поездки</div>
-              </div>
-              <div class="fact">
-                <div class="fact-k">Подход</div>
-                <div class="fact-v">готовые шаблоны + видео-опора</div>
-              </div>
-              <div class="fact">
-                <div class="fact-k">Доступ</div>
-                <div class="fact-v">в телефоне и под рукой в дороге</div>
-              </div>
-            </div>
+            <ul class="checklist">
+              <li>Фокус на практических ситуациях, а не на теории</li>
+              <li>Материалы устроены так, чтобы быстро находить нужное</li>
+              <li>Подходит, если важно “говорить спокойно”, а не “учиться годами”</li>
+              <li>Можно использовать прямо в дороге с телефона</li>
+            </ul>
 
             <div class="author-actions">
-              <a class="btn btn-primary" href="#purchase">Выбрать формат</a>
+              <a class="btn btn-primary" href="#order" data-buy-button>Купить за <span data-price-inline>—</span></a>
               <a class="btn btn-secondary" href="#contacts">Задать вопрос</a>
             </div>
           </div>
@@ -453,171 +339,240 @@
       </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section id="reviews" class="section">
+    <section id="reviews" class="section section-alt">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>Отзывы</h2>
-          <p class="p-muted reveal" data-reveal>Карточки: имя + что покупали + короткая цитата. Тексты замените на ваши реальные.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Отзывы</h2>
+          <p class="sub">Коротко и по делу: что почувствовали в поездке после.</p>
         </div>
 
         <div class="grid-3">
-          <article class="review reveal" data-reveal>
-            <div class="review-top">
-              <div class="avatar" aria-hidden="true">А</div>
-              <div>
-                <div class="review-name">Алия</div>
-                <div class="review-meta">Пакет: Travel Book + видеоурок</div>
-              </div>
+          <article class="quote reveal">
+            <div class="quote-top">
+              <div class="quote-name">Алина</div>
+              <div class="quote-meta">Travel Book + видеоурок</div>
             </div>
-            <p class="review-quote">«В аэропорту перестала паниковать — открыла нужный сценарий и сказала спокойно. Очень выручило.»</p>
+            <p class="quote-text">“В аэропорту впервые не паниковала. Открыла сценарий — быстро нашла фразу.”</p>
           </article>
 
-          <article class="review reveal" data-reveal>
-            <div class="review-top">
-              <div class="avatar" aria-hidden="true">Д</div>
-              <div>
-                <div class="review-name">Данияр</div>
-                <div class="review-meta">Пакет: Travel Book + видеоурок</div>
-              </div>
+          <article class="quote reveal">
+            <div class="quote-top">
+              <div class="quote-name">Дамир</div>
+              <div class="quote-meta">Travel Book + видеоурок</div>
             </div>
-            <p class="review-quote">«Мне важно было “не зависать”. Видео дало схему, а книга — быстрые фразы под ситуации.»</p>
+            <p class="quote-text">“В отеле спокойно решил вопрос с заселением. Понравилось, что всё коротко.”</p>
           </article>
 
-          <article class="review reveal" data-reveal>
-            <div class="review-top">
-              <div class="avatar" aria-hidden="true">Е</div>
-              <div>
-                <div class="review-name">Елена</div>
-                <div class="review-meta">Пакет: Travel Book + видеоурок</div>
-              </div>
+          <article class="quote reveal">
+            <div class="quote-top">
+              <div class="quote-name">Мария</div>
+              <div class="quote-meta">Travel Book + видеоурок</div>
             </div>
-            <p class="review-quote">«Удобно, что всё в телефоне. В отеле и кафе стало проще — меньше стресса, больше удовольствия.»</p>
+            <p class="quote-text">“Видео помогло перестать усложнять. Стало легче говорить простыми фразами.”</p>
           </article>
+        </div>
+
+        <div class="note reveal">
+          <div class="note-dot" aria-hidden="true"></div>
+          <p class="p muted">Тексты отзывов можно заменить на ваши реальные скрины/цитаты и добавить кнопку “полный отзыв”.</p>
         </div>
       </div>
     </section>
 
-    <!-- BONUS -->
-    <section id="bonus" class="section section-alt">
+    <section id="free" class="section">
       <div class="container">
-        <div class="bonus reveal" data-reveal>
-          <div class="bonus-copy">
-            <h2 class="h2">Бонус: мини-шпаргалка</h2>
-            <p class="p-muted">Короткий набор базовых фраз, чтобы уверенно начать и почувствовать опору ещё до покупки.</p>
+        <div class="free-grid">
+          <div class="free-copy reveal">
+            <h2 class="h2">Бесплатная шпаргалка</h2>
+            <p class="sub">Мини-материал, который можно взять с собой: короткие фразы на “первые 10 минут” в поездке.</p>
+
+            <ul class="mini-points compact">
+              <li>самые частые вопросы и ответы</li>
+              <li>как попросить повторить/говорить медленнее</li>
+              <li>как уточнить маршрут и оплату</li>
+            </ul>
           </div>
 
-          <form class="form bonus-form" data-form="bonus">
-            <label class="field">
-              <span class="label">Email</span>
-              <input class="input" type="email" name="email" placeholder="you@mail.com" autocomplete="email" required />
-            </label>
+          <div class="form-card reveal">
+            <form class="form" id="leadForm">
+              <div class="form-row">
+                <label class="label" for="leadName">Имя</label>
+                <input class="input" id="leadName" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required />
+              </div>
 
-            <label class="check">
-              <input type="checkbox" name="agree" required />
-              <span>
-                Согласен(на) с
-                <a href="legal/privacy.html">политикой</a> и
-                <a href="legal/personal-data.html">обработкой ПД</a>.
-              </span>
-            </label>
+              <div class="form-row">
+                <label class="label" for="leadContact">Контакт</label>
+                <input class="input" id="leadContact" name="contact" type="text" placeholder="Telegram / WhatsApp / Email" required />
+              </div>
 
-            <button class="btn btn-primary" type="submit">Получить бонус</button>
-            <div class="form-status" aria-live="polite" data-form-status></div>
-          </form>
+              <label class="consent">
+                <input type="checkbox" required />
+                <span>
+                  Согласен(а) на обработку персональных данных и принимаю
+                  <a href="legal/privacy" target="_blank" rel="noopener">политику конфиденциальности</a>
+                  и
+                  <a href="legal/pd-consent" target="_blank" rel="noopener">согласие на обработку ПД</a>.
+                </span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" required />
+                <span>
+                  Согласен(а) на получение материалов и сообщений по теме (см.
+                  <a href="legal/mailing-consent" target="_blank" rel="noopener">согласие на рассылки</a>).
+                </span>
+              </label>
+
+              <button class="btn btn-primary w-100" type="submit">Получить шпаргалку</button>
+              <p class="hint">Мы не передаём данные третьим лицам. Отписка доступна в любой момент.</p>
+
+              <div class="form-success" role="status" aria-live="polite" hidden>
+                Готово. Мы свяжемся с вами и отправим материал.
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="section">
+    <section id="faq" class="section section-alt">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2 reveal" data-reveal>FAQ</h2>
-          <p class="p-muted reveal" data-reveal>Аккордеон на &lt;details&gt; — быстро, доступно, без лишнего JS.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">FAQ</h2>
+          <p class="sub">Ответы на самые частые вопросы.</p>
         </div>
 
-        <div class="faq">
-          <details class="faq-item reveal" data-reveal>
-            <summary>Это подходит, если мой английский слабый?</summary>
-            <div class="faq-body">Да. Формулировки короткие и рабочие. Цель — справиться в ситуациях путешествия, а не сдавать экзамены.</div>
+        <div class="faq reveal">
+          <details class="faq-item">
+            <summary>Это подойдёт, если уровень английского слабый?</summary>
+            <div class="faq-body">
+              <p class="p muted">Да. Фразы и сценарии короткие, построены на простых конструкциях. Цель — уверенность в диалогах, без сложной грамматики.</p>
+            </div>
           </details>
 
-          <details class="faq-item reveal" data-reveal>
-            <summary>Нужно ли учить грамматику?</summary>
-            <div class="faq-body">Нет. Пакет строится на сценариях и готовых фразах. Видеоурок помогает говорить увереннее.</div>
+          <details class="faq-item">
+            <summary>Нужен ли интернет в поездке?</summary>
+            <div class="faq-body">
+              <p class="p muted">Можно сохранить материалы на телефон и пользоваться офлайн. Видео — по ссылке (его можно заранее посмотреть).</p>
+            </div>
           </details>
 
-          <details class="faq-item reveal" data-reveal>
-            <summary>Как я получу доступ после оплаты?</summary>
-            <div class="faq-body">Доступ открывается сразу после оплаты (поставьте вашу реальную механику: ссылка/личный кабинет/чат-бот).</div>
+          <details class="faq-item">
+            <summary>Когда я получу доступ после оплаты?</summary>
+            <div class="faq-body">
+              <p class="p muted">Сразу: автоматическая выдача ссылки/доступа. Если оплата вручную — отправка в течение короткого времени.</p>
+            </div>
           </details>
 
-          <details class="faq-item reveal" data-reveal>
-            <summary>Можно ли пользоваться с телефона?</summary>
-            <div class="faq-body">Да. Лендинг и материалы рассчитаны на мобильный формат.</div>
+          <details class="faq-item">
+            <summary>Можно ли задать вопрос перед покупкой?</summary>
+            <div class="faq-body">
+              <p class="p muted">Да. Ниже есть контакты и форма — напишите, подскажем, как лучше использовать пакет под вашу поездку.</p>
+            </div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- CONTACTS -->
+    <section id="order" class="section">
+      <div class="container">
+        <div class="order-grid">
+          <div class="order-copy reveal">
+            <h2 class="h2">Купить пакет</h2>
+            <p class="sub">Выберите удобный способ: оплата по ссылке или заявка (если хотите уточнить детали).</p>
+
+            <div class="order-box">
+              <div class="order-line">
+                <span class="order-label">Пакет</span>
+                <span class="order-value">Travel Book + видеоурок</span>
+              </div>
+              <div class="order-line">
+                <span class="order-label">Цена</span>
+                <span class="order-value" data-price-block>—</span>
+              </div>
+            </div>
+
+            <div class="order-actions">
+              <a class="btn btn-primary" href="#" data-pay-button>Перейти к оплате</a>
+              <a class="btn btn-secondary" href="#contacts">Задать вопрос</a>
+            </div>
+
+            <p class="hint">
+              Нажимая «Перейти к оплате», вы соглашаетесь с
+              <a href="legal/offer" target="_blank" rel="noopener">договором оферты</a>
+              и
+              <a href="legal/privacy" target="_blank" rel="noopener">политикой</a>.
+            </p>
+          </div>
+
+          <div class="form-card reveal">
+            <form class="form" id="questionForm">
+              <div class="form-row">
+                <label class="label" for="qName">Имя</label>
+                <input class="input" id="qName" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required />
+              </div>
+
+              <div class="form-row">
+                <label class="label" for="qContact">Контакт</label>
+                <input class="input" id="qContact" name="contact" type="text" placeholder="Telegram / WhatsApp / Email" required />
+              </div>
+
+              <div class="form-row">
+                <label class="label" for="qText">Сообщение</label>
+                <textarea class="input textarea" id="qText" name="message" rows="4" placeholder="Коротко опишите вопрос (например: поездка в апреле, пересадка, отель)"></textarea>
+              </div>
+
+              <label class="consent">
+                <input type="checkbox" required />
+                <span>
+                  Согласен(а) на обработку персональных данных и принимаю
+                  <a href="legal/privacy" target="_blank" rel="noopener">политику</a>
+                  и
+                  <a href="legal/pd-consent" target="_blank" rel="noopener">согласие на обработку ПД</a>.
+                </span>
+              </label>
+
+              <button class="btn btn-primary w-100" type="submit">Отправить</button>
+
+              <div class="form-success" role="status" aria-live="polite" hidden>
+                Принято. Мы свяжемся с вами.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contacts" class="section section-alt">
       <div class="container">
-        <div class="contact-grid">
-          <div class="contact-left reveal" data-reveal>
-            <h2 class="h2">Вопросы перед покупкой?</h2>
-            <p class="p-muted">Напишите — отвечу коротко и по делу. Можно уточнить формат, доступ и что лучше под вашу поездку.</p>
+        <div class="section-head reveal">
+          <h2 class="h2">Контакты</h2>
+          <p class="sub">Напишите удобным способом — ответим и подскажем.</p>
+        </div>
 
-            <div class="contact-cards">
-              <div class="contact-card">
-                <div class="cc-k">Email</div>
-                <div class="cc-v"><a href="mailto:hello@example.com">hello@example.com</a></div>
-              </div>
-              <div class="contact-card">
-                <div class="cc-k">Telegram</div>
-                <div class="cc-v"><a href="https://t.me/example" rel="noopener">t.me/example</a></div>
-              </div>
-              <div class="contact-card">
-                <div class="cc-k">WhatsApp</div>
-                <div class="cc-v"><a href="https://wa.me/0000000000" rel="noopener">написать</a></div>
-              </div>
+        <div class="contacts-grid">
+          <div class="contact-card reveal">
+            <h3 class="h3">Мессенджеры</h3>
+            <p class="p muted">Ссылки можно настроить в <span class="mono">assets/js/main.js</span>.</p>
+            <div class="contact-actions">
+              <a class="btn btn-secondary" href="#" data-wa>WhatsApp</a>
+              <a class="btn btn-secondary" href="#" data-tg>Telegram</a>
             </div>
           </div>
 
-          <div class="contact-right reveal" data-reveal>
-            <div class="side-card">
-              <h3 class="h3">Оставить сообщение</h3>
+          <div class="contact-card reveal">
+            <h3 class="h3">Email</h3>
+            <p class="p muted">Для документов и официальных запросов.</p>
+            <a class="link" href="#" data-email-link>—</a>
+          </div>
 
-              <form class="form" data-form="contact">
-                <label class="field">
-                  <span class="label">Имя</span>
-                  <input class="input" type="text" name="name" placeholder="Ваше имя" autocomplete="name" required />
-                </label>
-
-                <label class="field">
-                  <span class="label">Контакт</span>
-                  <input class="input" type="text" name="contact" placeholder="Email / Telegram / телефон" required />
-                </label>
-
-                <label class="field">
-                  <span class="label">Сообщение</span>
-                  <textarea class="input textarea" name="message" placeholder="Коротко ваш вопрос" rows="4" required></textarea>
-                </label>
-
-                <label class="check">
-                  <input type="checkbox" name="agree" required />
-                  <span>
-                    Я согласен(на) с
-                    <a href="legal/privacy.html">политикой</a>,
-                    <a href="legal/personal-data.html">обработкой ПД</a> и
-                    <a href="legal/offer.html">офертой</a>.
-                  </span>
-                </label>
-
-                <button class="btn btn-primary" type="submit">Отправить</button>
-                <div class="form-status" aria-live="polite" data-form-status></div>
-              </form>
+          <div class="contact-card reveal">
+            <h3 class="h3">Юридическая информация</h3>
+            <p class="p muted">Ссылки на документы — в футере и под формами.</p>
+            <div class="mini-links">
+              <a href="legal/privacy" target="_blank" rel="noopener">Политика</a>
+              <a href="legal/offer" target="_blank" rel="noopener">Оферта</a>
+              <a href="legal/pd-consent" target="_blank" rel="noopener">Согласие ПД</a>
             </div>
           </div>
         </div>
@@ -625,43 +580,51 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">Travel Book</div>
-        <div class="footer-note">© <span data-year></span> Все права защищены</div>
+      <div class="footer-left">
+        <div class="brand footer-brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">Travel Book</span>
+            <span class="brand-sub">+ видеоурок</span>
+          </span>
+        </div>
+        <p class="p muted">Материалы для уверенных поездок без стресса. Практика, сценарии, короткие фразы.</p>
+        <p class="small muted">© <span data-year></span> Ольга Говердовская</p>
       </div>
 
       <div class="footer-col">
         <div class="footer-title">Навигация</div>
-        <a class="footer-link" href="#inside">Что внутри</a>
-        <a class="footer-link" href="#purchase">Форматы</a>
-        <a class="footer-link" href="#author">Автор</a>
-        <a class="footer-link" href="#faq">FAQ</a>
+        <a href="#inside">Что внутри</a>
+        <a href="#formats">Пакет</a>
+        <a href="#author">Автор</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#order">Купить</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Юридическая информация</div>
-        <a class="footer-link" href="legal/privacy.html">Политика конфиденциальности</a>
-        <a class="footer-link" href="legal/personal-data.html">Согласие на обработку ПД</a>
-        <a class="footer-link" href="legal/offer.html">Договор оферты</a>
-        <a class="footer-link" href="legal/mailing.html">Согласие на рассылки</a>
+        <div class="footer-title">Документы</div>
+        <a href="legal/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a href="legal/pd-consent" target="_blank" rel="noopener">Согласие на обработку ПД</a>
+        <a href="legal/offer" target="_blank" rel="noopener">Договор оферты</a>
+        <a href="legal/mailing-consent" target="_blank" rel="noopener">Согласие на рассылки</a>
       </div>
 
       <div class="footer-col">
         <div class="footer-title">Контакты</div>
-        <a class="footer-link" href="mailto:hello@example.com">hello@example.com</a>
-        <a class="footer-link" href="https://t.me/example" rel="noopener">t.me/example</a>
+        <a href="#" data-email-link>—</a>
+        <a href="#" data-wa>WhatsApp</a>
+        <a href="#" data-tg>Telegram</a>
       </div>
     </div>
   </footer>
 
-  <!-- Cookie notice -->
-  <div class="cookie" role="dialog" aria-live="polite" aria-label="Уведомление о cookies" data-cookie>
+  <div class="cookie" data-cookie hidden>
     <div class="cookie-inner">
       <div class="cookie-text">
-        Мы используем cookies для корректной работы сайта. Подробнее — в
-        <a href="legal/privacy.html">политике конфиденциальности</a>.
+        Мы используем cookie для корректной работы сайта. Подробнее — в
+        <a href="legal/privacy" target="_blank" rel="noopener">политике конфиденциальности</a>.
       </div>
       <div class="cookie-actions">
         <button class="btn btn-secondary btn-sm" type="button" data-cookie-close>Закрыть</button>
@@ -670,16 +633,23 @@
     </div>
   </div>
 
-  <script src="assets/js/main.js" defer></script>
+  <div class="modal" data-modal hidden aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Оплата">
+      <div class="modal-top">
+        <div class="modal-title">Оплата</div>
+        <button class="modal-x" type="button" aria-label="Закрыть" data-modal-close>×</button>
+      </div>
+      <p class="p muted">
+        Укажи ссылку на оплату в <span class="mono">assets/js/main.js</span> (параметр <span class="mono">paymentUrl</span>).
+      </p>
+      <div class="modal-actions">
+        <a class="btn btn-primary w-100" href="#contacts" data-modal-close>Написать перед оплатой</a>
+        <button class="btn btn-secondary w-100" type="button" data-modal-close>Понятно</button>
+      </div>
+    </div>
+  </div>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Travel Book + видеоурок",
-    "description": "Онлайн-пакет: Travel Book + видеоурок по английскому для путешествий. Сценарии и фразы для уверенности в поездке.",
-    "brand": { "@type": "Brand", "name": "Travel Book" }
-  }
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
